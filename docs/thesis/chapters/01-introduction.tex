@@ -1,0 +1,13 @@
+\chapter{Introduction}
+Wildfires pose severe environmental and socioeconomic risks. Early and reliable detection enables timely response and mitigation. Modern computer vision systems leverage machine learning to classify imagery; however, deploying such models for real-time operation at the edge often requires careful optimization. Field-programmable gate arrays (FPGAs) offer an attractive platform due to their parallelism, low latency, and energy efficiency.
+
+This thesis investigates an FPGA-based implementation of a compact multilayer perceptron (MLP) that performs per-pixel wildfire classification from RGB inputs. The contributions of this work are:
+\begin{itemize}
+    \item A reproducible training pipeline for a lightweight MLP suitable for fixed-point inference.
+    \item A quantization-aware export flow that produces weights, biases, and activation lookup tables compatible with VHDL.
+    \item A streaming VHDL architecture integrating `multiplier`, `neuron`, `nn\_rgb`, and `sigmoid\_lut` modules for real-time inference.
+    \item An evaluation of accuracy, throughput, and FPGA resource utilization on a Xilinx UltraScale device.
+\end{itemize}
+
+\section{Thesis Structure}
+Chapter~\ref{chap:background} reviews background on wildfire detection, neural networks, fixed-point arithmetic, and FPGA architectures. Chapter~\ref{chap:dataset-methods} describes the dataset, preprocessing, network design, and the training/export toolchain. Chapter~\ref{chap:fpga-impl} details the VHDL design and integration in Vivado. Chapter~\ref{chap:results} presents the experimental evaluation. Chapter~\ref{chap:conclusion} concludes and outlines future work.

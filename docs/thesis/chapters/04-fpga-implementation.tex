@@ -1,0 +1,25 @@
+\chapter{FPGA Implementation}\label{chap:fpga-impl}
+This chapter details the VHDL design and Vivado integration.
+
+\section{Architecture Overview}
+The design comprises parameterized `multiplier` units, `neuron` blocks aggregating weighted sums with bias, and a top-level `nn\_rgb` module orchestrating layers. The `sigmoid\_lut`/`sigmoid\_IP` provides activation using a precomputed lookup table stored in block RAM.
+
+\section{VHDL Modules}
+Key files in `VHDL/` include:
+\begin{itemize}
+    \item `config.vhd`: Global configuration (bit widths, scaling factors).
+    \item `multiplier.vhd`: Fixed-point multiply stage using DSP resources.
+    \item `neuron.vhd`: Accumulation and bias addition; interfaces to activation.
+    \item `nn\_rgb.vhd`: Top entity connecting layers and streaming interfaces.
+    \item `sigmoid\_lut.vhd` and `sigmoid\_IP.vhd`: Activation lookup.
+    \item `tb\_nn\_rgb.vhd`, `sim\_nn\_rgb.vhd`: Testbench and simulation harness.
+\end{itemize}
+
+\section{Simulation}
+ModelSim/Questa simulation artifacts are under `sim/`. Provided test vectors allow functional verification against golden outputs. Waveforms and logs (e.g., `vsim.wlf`) support debugging.
+
+\section{Synthesis and Implementation}
+The Vivado project `vivado_thesis/thesis_ultrascale_1/` targets an UltraScale device. Post-implementation reports (timing, utilization, clocking) are stored under `thesis_ultrascale_1.runs/`. The design is clocked to meet real-time throughput for streaming pixels.
+
+\section{Resource/Performance Considerations}
+Design parameters (bit widths, layer sizes) affect LUTs, FFs, BRAM, and DSP usage. Pipelining and parallelization trade latency for throughput. Activation via LUT reduces DSP demand versus CORDIC or piecewise-linear implementations.

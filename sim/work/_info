@@ -1,0 +1,337 @@
+m255
+K3
+13
+cModel Technology
+dD:\tepak\kinmaster\sha512_80_reg
+Pconfig
+Z0 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z1 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z2 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+w1762093072
+Z3 d\\TRUENAS\server\proedros\FPGA_generate - Copy\sim
+8//TRUENAS/server/proedros/FPGA_generate - Copy/config.vhd
+F//TRUENAS/server/proedros/FPGA_generate - Copy/config.vhd
+l0
+L7
+VJ6TQkIeeC06<:kU`cj<]20
+Z4 OV;C;10.1d;51
+32
+Z5 o-work work -2002 -explicit -O0
+Z6 tExplicit 1
+!s100 k9JREQMNCe4iSSRzgSi4?2
+!i10b 1
+!s108 1769185832.015000
+!s90 -reportprogress|300|-work|work|-2002|-explicit|//TRUENAS/server/proedros/FPGA_generate - Copy/config.vhd|
+!s107 //TRUENAS/server/proedros/FPGA_generate - Copy/config.vhd|
+Econtrol
+Z7 w1769185097
+Z8 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+R1
+R2
+R3
+Z9 8//TRUENAS/server/proedros/FPGA_generate - Copy/control.vhd
+Z10 F//TRUENAS/server/proedros/FPGA_generate - Copy/control.vhd
+l0
+L6
+V`S?<mMakW60JH0dUo60X73
+R4
+32
+Z11 !s108 1769185832.343000
+Z12 !s90 -reportprogress|300|-work|work|-2002|-explicit|//TRUENAS/server/proedros/FPGA_generate - Copy/control.vhd|
+Z13 !s107 //TRUENAS/server/proedros/FPGA_generate - Copy/control.vhd|
+R5
+R6
+!s100 hZkWifSlF0=bOb06B2kI50
+!i10b 1
+Abehave
+R8
+R1
+R2
+Z14 DEx4 work 7 control 0 22 `S?<mMakW60JH0dUo60X73
+l26
+L18
+V`;odgTJ_4FaTA:IUL?QOP0
+R4
+32
+R11
+R12
+R13
+R5
+R6
+!s100 QgfCC;:00;[Vi85DDR7GH0
+!i10b 1
+Emultiplier
+Z15 w1762097216
+R8
+Z16 DPx4 work 6 config 0 22 J6TQkIeeC06<:kU`cj<]20
+R1
+R2
+R3
+Z17 8//TRUENAS/server/proedros/FPGA_generate - Copy/multiplier.vhd
+Z18 F//TRUENAS/server/proedros/FPGA_generate - Copy/multiplier.vhd
+l0
+L8
+V35L;XK1SiOCJ6iJ<zlDQh1
+R4
+32
+Z19 !s108 1769185832.745000
+Z20 !s90 -reportprogress|300|-work|work|-2002|-explicit|//TRUENAS/server/proedros/FPGA_generate - Copy/multiplier.vhd|
+Z21 !s107 //TRUENAS/server/proedros/FPGA_generate - Copy/multiplier.vhd|
+R5
+R6
+!s100 RdgRD3Vc`3cM2SKB^GNQ[1
+!i10b 1
+Abehave
+R8
+R16
+R1
+R2
+Z22 DEx4 work 10 multiplier 0 22 35L;XK1SiOCJ6iJ<zlDQh1
+l24
+L19
+V4C[54>PU0KM_bH[Wgj_[E1
+R4
+32
+R19
+R20
+R21
+R5
+R6
+!s100 z3OCbn6_GCN`ENzHUdd1l0
+!i10b 1
+Eneuron
+Z23 w1762097214
+R16
+R8
+R1
+R2
+R3
+Z24 8//TRUENAS/server/proedros/FPGA_generate - Copy/neuron.vhd
+Z25 F//TRUENAS/server/proedros/FPGA_generate - Copy/neuron.vhd
+l0
+L11
+VGlPLj`8N1ZL_HQADKf<B[3
+R4
+32
+Z26 !s108 1769185833.158000
+Z27 !s90 -reportprogress|300|-work|work|-2002|-explicit|//TRUENAS/server/proedros/FPGA_generate - Copy/neuron.vhd|
+Z28 !s107 //TRUENAS/server/proedros/FPGA_generate - Copy/neuron.vhd|
+R5
+R6
+!s100 6PZioYn2a8_]G8BcSeM3h1
+!i10b 1
+Abehave
+Z29 DEx4 work 10 sigmoid_ip 0 22 7IilX2E:ZY8;<:e<jTb5m1
+R22
+R16
+R8
+R1
+R2
+Z30 DEx4 work 6 neuron 0 22 GlPLj`8N1ZL_HQADKf<B[3
+l28
+L19
+V^KR9^UHQFf@ihK`;j4fDX2
+R4
+32
+R26
+R27
+R28
+R5
+R6
+!s100 1@PWQkEeAi67X;HYX?ULV3
+!i10b 1
+Enn_rgb
+Z31 w1762093074
+R16
+R8
+R1
+R2
+R3
+Z32 8//TRUENAS/server/proedros/FPGA_generate - Copy/nn_rgb.vhd
+Z33 F//TRUENAS/server/proedros/FPGA_generate - Copy/nn_rgb.vhd
+l0
+L16
+V3V?EB=4XLA@VlJ_o^:o[l1
+R4
+32
+Z34 !s108 1769185833.577000
+Z35 !s90 -reportprogress|300|-work|work|-2002|-explicit|//TRUENAS/server/proedros/FPGA_generate - Copy/nn_rgb.vhd|
+Z36 !s107 //TRUENAS/server/proedros/FPGA_generate - Copy/nn_rgb.vhd|
+R5
+R6
+!s100 1AN4SR1h>bPMEQ164o:Km3
+!i10b 1
+Abehave
+R14
+R30
+R16
+R8
+R1
+R2
+Z37 DEx4 work 6 nn_rgb 0 22 3V?EB=4XLA@VlJ_o^:o[l1
+l57
+L39
+VogeLn11z;J6[o3ZM@QF0m1
+R4
+32
+R34
+R35
+R36
+R5
+R6
+!s100 N>ei>gXG:i1HE2YfL<cgC3
+!i10b 1
+Esigmoid_ip
+Z38 w1760519065
+R1
+R2
+R3
+Z39 8//TRUENAS/server/proedros/FPGA_generate - Copy/sigmoid_IP.vhd
+Z40 F//TRUENAS/server/proedros/FPGA_generate - Copy/sigmoid_IP.vhd
+l0
+L40
+V7IilX2E:ZY8;<:e<jTb5m1
+R4
+32
+Z41 !s108 1769185834.214000
+Z42 !s90 -reportprogress|300|-work|work|-2002|-explicit|//TRUENAS/server/proedros/FPGA_generate - Copy/sigmoid_IP.vhd|
+Z43 !s107 //TRUENAS/server/proedros/FPGA_generate - Copy/sigmoid_IP.vhd|
+R5
+R6
+!s100 ?SG]n3Tam5XkFM4<U]ZnJ0
+!i10b 1
+Artl
+R1
+R2
+R29
+l69
+L48
+VVb9TAIV`RSEhAXh^;z>BT3
+R4
+32
+R41
+R42
+R43
+R5
+R6
+!s100 BNRHGbek;5fZDjMY6znF42
+!i10b 1
+Esigmoid_lut
+Z44 w1762034104
+R8
+R1
+R2
+R3
+Z45 8//TRUENAS/server/proedros/FPGA_generate - Copy/sigmoid_lut.vhd
+Z46 F//TRUENAS/server/proedros/FPGA_generate - Copy/sigmoid_lut.vhd
+l0
+L10
+VjHlo:Kg]@LWJc71Agj=Co2
+R4
+32
+Z47 !s108 1769185834.617000
+Z48 !s90 -reportprogress|300|-work|work|-2002|-explicit|//TRUENAS/server/proedros/FPGA_generate - Copy/sigmoid_lut.vhd|
+Z49 !s107 //TRUENAS/server/proedros/FPGA_generate - Copy/sigmoid_lut.vhd|
+R5
+R6
+!s100 Dc4=4BG?YM7eX[MeGoG2?0
+!i10b 1
+Artl
+R8
+R1
+R2
+DEx4 work 11 sigmoid_lut 0 22 jHlo:Kg]@LWJc71Agj=Co2
+l29
+L19
+V?B7GzV>C4<:;?T^>V_e_S1
+!s100 md3b6abRLYkgdKB2gdEC>2
+R4
+32
+R47
+R48
+R49
+R5
+R6
+!i10b 1
+Esim_nn_rgb
+Z50 w1738754666
+Z51 DPx4 ieee 16 std_logic_textio 0 22 ?Il0a149GV276[?[UMDWh2
+R8
+R1
+R2
+R3
+Z52 8//TRUENAS/server/proedros/FPGA_generate - Copy/sim_nn_rgb.vhd
+Z53 F//TRUENAS/server/proedros/FPGA_generate - Copy/sim_nn_rgb.vhd
+l0
+L17
+V>JfhXUzZOMhG9GCbRNXU@0
+!s100 V]f78[k>`DBBc4d]UN2^G2
+R4
+32
+!i10b 1
+Z54 !s108 1769185835.037000
+Z55 !s90 -reportprogress|300|-work|work|-2002|-explicit|//TRUENAS/server/proedros/FPGA_generate - Copy/sim_nn_rgb.vhd|
+Z56 !s107 //TRUENAS/server/proedros/FPGA_generate - Copy/sim_nn_rgb.vhd|
+R5
+R6
+Asim
+R16
+R37
+R51
+R8
+R1
+R2
+Z57 DEx4 work 10 sim_nn_rgb 0 22 >JfhXUzZOMhG9GCbRNXU@0
+l50
+L20
+Z58 VheceIl;QkDmUVJd_DeB=n1
+Z59 !s100 XF[N6CT7GKWj023fbmZEE3
+R4
+32
+!i10b 1
+R54
+R55
+R56
+R5
+R6
+Etb_nn_rgb
+Z60 w1759240161
+R51
+R8
+R1
+R2
+R3
+Z61 8//TRUENAS/server/proedros/FPGA_generate - Copy/tb_nn_rgb.vhd
+Z62 F//TRUENAS/server/proedros/FPGA_generate - Copy/tb_nn_rgb.vhd
+l0
+L9
+VNM5i]iVX4_mKhLo_K1h0F3
+R4
+32
+Z63 !s108 1769185508.079000
+Z64 !s90 -reportprogress|300|-work|work|-2002|-explicit|//TRUENAS/server/proedros/FPGA_generate - Copy/tb_nn_rgb.vhd|
+Z65 !s107 //TRUENAS/server/proedros/FPGA_generate - Copy/tb_nn_rgb.vhd|
+R5
+R6
+!s100 [nLNG]HRn2<[UNNz<G;A_0
+!i10b 1
+Asim
+R16
+R37
+R51
+R8
+R1
+R2
+DEx4 work 9 tb_nn_rgb 0 22 NM5i]iVX4_mKhLo_K1h0F3
+l42
+L12
+VHJhjZKn84dWbPjd2^CclB3
+R4
+32
+R63
+R64
+R65
+R5
+R6
+!s100 6HKRCjjz7A8RN53m;kdM@1
+!i10b 1

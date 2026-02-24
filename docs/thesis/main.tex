@@ -1,0 +1,81 @@
+% Thesis main file
+\documentclass[12pt,oneside]{book}
+
+% Encoding and language (XeLaTeX)
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\usepackage[english]{babel}
+
+% Page layout
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{float}
+
+% Math and code
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{basicstyle=\ttfamily\small,breaklines=true,frame=single}
+
+% Links
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink]{cleveref}
+
+% Bibliography (use bibtex backend for wider compatibility)
+\usepackage[backend=bibtex,style=ieee]{biblatex}
+\addbibresource{refs.bib}
+
+% Custom commands
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+% Title data (edit these)
+\title{FPGA-Accelerated Neural Network for Wildfire Pixel Classification}
+\author{Your Name}
+\date{Month Year}
+
+\begin{document}
+
+% Title page
+\input{titlepage}
+\frontmatter
+
+% Abstract
+\chapter*{Abstract}
+\input{abstract}
+
+% Acknowledgements (optional)
+\chapter*{Acknowledgements}
+\input{acknowledgements}
+
+% Table of contents, figures, tables
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+
+% Chapters
+\input{chapters/01-introduction}
+\input{chapters/02-background}
+\input{chapters/03-dataset-and-methods}
+\input{chapters/04-fpga-implementation}
+\input{chapters/05-results-and-evaluation}
+\input{chapters/06-conclusion-and-future-work}
+
+% Appendices
+\appendix
+\input{appendices/appendix-a}
+
+% Bibliography
+\printbibliography
+
+\end{document}

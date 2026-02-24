@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xczu7ev-ffvc1156-2-e" LaunchTime="1768495250">
+  <File Type="ROUTE-PWR" Name="nn_rgb_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="nn_rgb.tcl"/>
+  <File Type="ROUTE-PWR-SUM" Name="nn_rgb_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="nn_rgb_reports.tcl"/>
+  <File Type="OPT-RQA-PB" Name="nn_rgb_rqa_opted.pb"/>
+  <File Type="BITSTR-MMI" Name="nn_rgb.mmi"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="nn_rgb_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="nn_rgb_timing_summary_init.rpt"/>
+  <File Type="OPT-TIMING" Name="nn_rgb_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="nn_rgb_opt.dcp"/>
+  <File Type="OPT-DRC" Name="nn_rgb_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="nn_rgb.hwdef"/>
+  <File Type="PWROPT-DCP" Name="nn_rgb_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="nn_rgb_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="nn_rgb_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="nn_rgb_placed.dcp"/>
+  <File Type="PLACE-IO" Name="nn_rgb_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="nn_rgb_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="nn_rgb_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="nn_rgb_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="nn_rgb_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="nn_rgb_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="nn_rgb_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BIN" Name="nn_rgb.bin"/>
+  <File Type="PLACE-TIMING" Name="nn_rgb_timing_summary_placed.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="nn_rgb_power_routed.rpx"/>
+  <File Type="PLACE-RQA-PB" Name="nn_rgb_rqa_placed.pb"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="nn_rgb_postplace_pwropt.dcp"/>
+  <File Type="BITSTR-MSK" Name="nn_rgb.msk"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="nn_rgb_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="nn_rgb_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="nn_rgb_drc_physopted.rpt"/>
+  <File Type="BITSTR-RBT" Name="nn_rgb.rbt"/>
+  <File Type="PHYSOPT-TIMING" Name="nn_rgb_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="nn_rgb_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="nn_rgb_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="nn_rgb_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="nn_rgb_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="nn_rgb_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="nn_rgb_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="nn_rgb_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="nn_rgb_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="nn_rgb_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-RQS-PB" Name="nn_rgb_rqs_routed.pb"/>
+  <File Type="ROUTE-STATUS" Name="nn_rgb_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="nn_rgb_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="nn_rgb_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="nn_rgb_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="nn_rgb_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="nn_rgb_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="nn_rgb_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="nn_rgb_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="nn_rgb_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="nn_rgb_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="nn_rgb_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="nn_rgb_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="nn_rgb_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="nn_rgb_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="nn_rgb_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="nn_rgb_bus_skew_postroute_physopted.rpt"/>
+  <File Type="BG-BIT" Name="nn_rgb.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="nn_rgb_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="nn_rgb_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-NKY" Name="nn_rgb.nky"/>
+  <File Type="BITSTR-BMM" Name="nn_rgb_bd.bmm"/>
+  <File Type="PDI-FILE" Name="nn_rgb.pdi"/>
+  <File Type="BOOT-PDI-FILE" Name="nn_rgb_boot.pdi"/>
+  <File Type="PL-PDI-FILE" Name="nn_rgb_pld.pdi"/>
+  <File Type="RCFI_FILE" Name="nn_rgb.rcfi"/>
+  <File Type="CFI_FILE" Name="nn_rgb.cfi"/>
+  <File Type="RNPI_FILE" Name="nn_rgb.rnpi"/>
+  <File Type="NPI_FILE" Name="nn_rgb.npi"/>
+  <File Type="RBD_FILE" Name="nn_rgb.rbd"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="nn_rgb.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="nn_rgb.sysdef"/>
+  <File Type="BG-BGN" Name="nn_rgb.bgn"/>
+  <File Type="BG-DRC" Name="nn_rgb.drc"/>
+  <File Type="RDI-RDI" Name="nn_rgb.vdi"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="ROUTE-RQS" Name="nn_rgb_routed.rqs"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS" Name="nn_rgb_postroute_physopted.rqs"/>
+  <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../../../FPGA_generate/config.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="work"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../FPGA_generate/control.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../FPGA_generate/sigmoid_IP.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../FPGA_generate/neuron.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../FPGA_generate/sigmoid_lut.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../FPGA_generate/multiplier.vhd">
+      <FileInfo>
+        <Attr Name="Library" Val="work"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../FPGA_generate/nn_rgb.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="nn_rgb"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PPRDIR/../../../FPGA_generate/zcu106_minimal.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1" RelGenDir="$PGENDIR/utils_1">
+    <Filter Type="Utils"/>
+    <File Path="$PSRCDIR/utils_1/imports/synth_1/nn_rgb.dcp">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedInSteps" Val="synth_1"/>
+        <Attr Name="AutoDcp" Val="1"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>

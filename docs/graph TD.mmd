@@ -1,0 +1,12 @@
+graph TD
+    A[Dataset\n(data/wildfire)] --> B[Train MLP in Python\npython/train_mlp.py]
+    B --> C[Quantize / Export fixed-point\npython/export_fixedpoint.py]
+    C --> D[Generate LUT + coeff files\npython/gen_sigmoid_lut.py\npython/export_to_xilinx.py]
+    D -->|activation_lut.coe, weights/bias txt| E[Vivado project\nvivado_thesis/thesis_ultrascale_1]
+    E --> F[Synthesis]
+    F --> G[Implementation\n(opt/place/route + reports)]
+    G --> H[Bitstream on ZCU106\nxczu7ev]
+
+    %% Optional validation paths
+    C --> I[Evaluate fixed-point vs float\npython/evaluate_and_plot.py]
+    E --> J[RTL simulation (ModelSim)\n sim/sim.mpf]

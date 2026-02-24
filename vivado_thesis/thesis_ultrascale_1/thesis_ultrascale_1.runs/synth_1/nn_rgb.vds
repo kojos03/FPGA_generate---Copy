@@ -1,0 +1,865 @@
+#-----------------------------------------------------------
+# Vivado v2024.1.2 (64-bit)
+# SW Build 5164865 on Thu Sep  5 14:37:11 MDT 2024
+# IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+# SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+# Start of session at: Sun Nov  2 18:49:15 2025
+# Process ID: 5200
+# Current directory: C:/Users/OmilosNeonTexn/Desktop/tepak/erevna/thesis_ultrascale_1/thesis_ultrascale_1.runs/synth_1
+# Command line: vivado.exe -log nn_rgb.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source nn_rgb.tcl
+# Log file: C:/Users/OmilosNeonTexn/Desktop/tepak/erevna/thesis_ultrascale_1/thesis_ultrascale_1.runs/synth_1/nn_rgb.vds
+# Journal file: C:/Users/OmilosNeonTexn/Desktop/tepak/erevna/thesis_ultrascale_1/thesis_ultrascale_1.runs/synth_1\vivado.jou
+# Running On        :DESKTOP-0NKI8SO
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :19045
+# Processor Detail  :Intel(R) Core(TM) i5-4460  CPU @ 3.20GHz
+# CPU Frequency     :3193 MHz
+# CPU Physical cores:4
+# CPU Logical cores :4
+# Host memory       :10622 MB
+# Swap memory       :6474 MB
+# Total Virtual     :17096 MB
+# Available Virtual :5453 MB
+#-----------------------------------------------------------
+source nn_rgb.tcl -notrace
+create_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 507.844 ; gain = 135.863
+Command: read_checkpoint -auto_incremental -incremental C:/Users/OmilosNeonTexn/Desktop/tepak/erevna/thesis_ultrascale_1/thesis_ultrascale_1.srcs/utils_1/imports/synth_1/nn_rgb.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/OmilosNeonTexn/Desktop/tepak/erevna/thesis_ultrascale_1/thesis_ultrascale_1.srcs/utils_1/imports/synth_1/nn_rgb.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top nn_rgb -part xczu7ev-ffvc1156-2-e
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xczu7ev'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu7ev'
+INFO: [Device 21-403] Loading part xczu7ev-ffvc1156-2-e
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 868
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 2061.992 ; gain = 407.453
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'nn_rgb' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/nn_rgb.vhd:39]
+INFO: [Synth 8-638] synthesizing module 'neuron' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/neuron.vhd:19]
+	Parameter weightsIn bound to: 128'b00000000000000000000100111011100000000000000000000000000100110101111111111111111111111111110011011111111111111111111111110000101 
+INFO: [Synth 8-638] synthesizing module 'multiplier' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: -123 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized0' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: -26 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized0' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized1' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: 154 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized1' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'sigmoid_IP' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/sigmoid_IP.vhd:48]
+INFO: [Synth 8-3491] module 'sigmoid_lut' declared at 'C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/sigmoid_lut.vhd:10' bound to instance 'U_ROM' of component 'sigmoid_lut' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/sigmoid_IP.vhd:70]
+INFO: [Synth 8-638] synthesizing module 'sigmoid_lut' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/sigmoid_lut.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'sigmoid_lut' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/sigmoid_lut.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'sigmoid_IP' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/sigmoid_IP.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'neuron' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/neuron.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'neuron__parameterized0' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/neuron.vhd:19]
+	Parameter weightsIn bound to: 128'b00000000000000000011010101001011111111111111111111111111001001110000000000000000000000000101011100000000000000000000000010111101 
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized2' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: 189 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized2' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized3' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: 87 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized3' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized4' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: -217 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized4' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'neuron__parameterized0' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/neuron.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'neuron__parameterized1' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/neuron.vhd:19]
+	Parameter weightsIn bound to: 128'b11111111111111111111000111010010000000000000000000000001000010111111111111111111111111111101001111111111111111111111111100111100 
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized5' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: -196 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized5' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized6' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: -45 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized6' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized7' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: 267 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized7' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'neuron__parameterized1' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/neuron.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'neuron__parameterized2' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/neuron.vhd:19]
+	Parameter weightsIn bound to: 128'b00000000000000000000100110001101111111111111111111111110111010110000000000000000000000000101111100000000000000000000000100000100 
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized8' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: 260 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized8' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized9' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: 95 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized9' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized10' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: -277 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized10' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'neuron__parameterized2' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/neuron.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'neuron__parameterized3' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/neuron.vhd:19]
+	Parameter weightsIn bound to: 128'b11111111111111111111000011010010000000000000000000000000101000001111111111111111111111111100110111111111111111111111111101011011 
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized11' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: -165 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized11' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized12' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: -51 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized12' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized13' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: 160 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized13' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'neuron__parameterized3' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/neuron.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'neuron__parameterized4' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/neuron.vhd:19]
+	Parameter weightsIn bound to: 128'b00000000000000000011011111110100111111111111111111111111001000010000000000000000000000000101010000000000000000000000000011000101 
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized14' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: 197 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized14' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized15' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: 84 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized15' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized16' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: -223 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized16' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'neuron__parameterized4' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/neuron.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'neuron__parameterized5' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/neuron.vhd:19]
+	Parameter weightsIn bound to: 128'b11111111111111111110011100010111000000000000000000000001010101000000000000000000000000000000110111111111111111111111111101010000 
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized17' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: -176 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized17' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized18' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: 13 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized18' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized19' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: 340 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized19' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'neuron__parameterized5' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/neuron.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'neuron__parameterized6' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/neuron.vhd:19]
+	Parameter weightsIn bound to: 256'b0000000000000000000011011011010000000000000000000000000001010100111111111111111111111111100111100000000000000000000000000100010011111111111111111111111110010000000000000000000000000000010111101111111111111111111111111010010000000000000000000000000000101101 
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized20' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: 45 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized20' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized21' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: -92 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized21' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized22' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: 94 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized22' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized23' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: -112 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized23' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized24' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: 68 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized24' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized25' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: -98 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized25' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'neuron__parameterized6' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/neuron.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'neuron__parameterized7' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/neuron.vhd:19]
+	Parameter weightsIn bound to: 256'b1111111111111111111101101110110111111111111111111111111101101100000000000000000000000000000111111111111111111111111111111011010100000000000000000000000001100101111111111111111111111111100000100000000000000000000000000010001011111111111111111111111110110000 
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized26' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: -80 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized26' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized27' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: 34 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized27' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized28' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: -126 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized28' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized29' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: 101 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized29' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized30' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: -75 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized30' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized31' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: 31 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized31' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'multiplier__parameterized32' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+	Parameter weight bound to: -148 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'multiplier__parameterized32' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/multiplier.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'neuron__parameterized7' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/neuron.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'control' [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/control.vhd:22]
+	Parameter delay bound to: 9 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'control' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/control.vhd:22]
+INFO: [Synth 8-256] done synthesizing module 'nn_rgb' (0#1) [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/nn_rgb.vhd:39]
+WARNING: [Synth 8-6014] Unused sequential element enable_reg was removed.  [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/nn_rgb.vhd:92]
+WARNING: [Synth 8-6014] Unused sequential element y_reg[9] was removed.  [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/nn_rgb.vhd:104]
+WARNING: [Synth 8-6014] Unused sequential element y_reg[10] was removed.  [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/nn_rgb.vhd:104]
+WARNING: [Synth 8-6014] Unused sequential element result_g_reg was removed.  [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/nn_rgb.vhd:147]
+WARNING: [Synth 8-6014] Unused sequential element g_out_reg was removed.  [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/nn_rgb.vhd:173]
+WARNING: [Synth 8-3917] design nn_rgb has port led[2] driven by constant 0
+WARNING: [Synth 8-3917] design nn_rgb has port led[1] driven by constant 0
+WARNING: [Synth 8-3917] design nn_rgb has port led[0] driven by constant 0
+WARNING: [Synth 8-7129] Port enable_in[2] in module nn_rgb is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_in[1] in module nn_rgb is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_in[0] in module nn_rgb is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 2177.715 ; gain = 523.176
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 2177.715 ; gain = 523.176
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 2177.715 ; gain = 523.176
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.078 . Memory (MB): peak = 2177.715 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/zcu106_minimal.xdc]
+create_clock: Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2278.535 ; gain = 17.980
+Finished Parsing XDC File [C:/Users/OmilosNeonTexn/Desktop/FPGA_generate/zcu106_minimal.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2278.535 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.160 . Memory (MB): peak = 2278.535 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:32 ; elapsed = 00:00:37 . Memory (MB): peak = 2278.535 ; gain = 623.996
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xczu7ev-ffvc1156-2-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:32 ; elapsed = 00:00:37 . Memory (MB): peak = 2278.535 ; gain = 623.996
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:32 ; elapsed = 00:00:37 . Memory (MB): peak = 2278.535 ; gain = 623.996
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:33 ; elapsed = 00:00:39 . Memory (MB): peak = 2278.535 ; gain = 623.996
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 54    
+	   3 Input   32 Bit       Adders := 9     
+	   2 Input   31 Bit       Adders := 45    
+	   4 Input   18 Bit       Adders := 7     
+	   8 Input   18 Bit       Adders := 2     
+	   2 Input   16 Bit       Adders := 9     
++---Registers : 
+	               18 Bit    Registers := 9     
+	               16 Bit    Registers := 9     
+	                9 Bit    Registers := 3     
+	                8 Bit    Registers := 28    
+	                1 Bit    Registers := 7     
++---Multipliers : 
+	               9x32  Multipliers := 9     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 45    
+	   2 Input   31 Bit        Muxes := 45    
+	   3 Input    8 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 6     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1728 (col length:144)
+BRAMs: 624 (col length: RAMB18 144 RAMB36 72)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+DSP Report: Generating DSP U_ROM/x16, operation Mode is: A*B.
+DSP Report: operator U_ROM/x16 is absorbed into DSP U_ROM/x16.
+DSP Report: Generating DSP U_ROM/x12, operation Mode is: A*B.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: Generating DSP U_ROM/x12, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: Generating DSP U_ROM/x9, operation Mode is: A*(B:0x6000).
+DSP Report: operator U_ROM/x9 is absorbed into DSP U_ROM/x9.
+DSP Report: Generating DSP gen[1].mult/prod_r_reg, operation Mode is: (A*(B:0x3ffe6))'.
+DSP Report: register gen[1].mult/prod_r_reg is absorbed into DSP gen[1].mult/prod_r_reg.
+DSP Report: operator gen[1].mult/prod_r0 is absorbed into DSP gen[1].mult/prod_r_reg.
+DSP Report: Generating DSP gen[2].mult/prod_r_reg, operation Mode is: ((A:0x9a)*B)'.
+DSP Report: register gen[2].mult/prod_r_reg is absorbed into DSP gen[2].mult/prod_r_reg.
+DSP Report: operator gen[2].mult/prod_r0 is absorbed into DSP gen[2].mult/prod_r_reg.
+DSP Report: Generating DSP gen[0].mult/prod_r_reg, operation Mode is: (A*(B:0x3ff85))'.
+DSP Report: register gen[0].mult/prod_r_reg is absorbed into DSP gen[0].mult/prod_r_reg.
+DSP Report: operator gen[0].mult/prod_r0 is absorbed into DSP gen[0].mult/prod_r_reg.
+DSP Report: Generating DSP U_ROM/x16, operation Mode is: A*B.
+DSP Report: operator U_ROM/x16 is absorbed into DSP U_ROM/x16.
+DSP Report: Generating DSP U_ROM/x12, operation Mode is: A*B.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: Generating DSP U_ROM/x12, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: Generating DSP U_ROM/x9, operation Mode is: A*(B:0x6000).
+DSP Report: operator U_ROM/x9 is absorbed into DSP U_ROM/x9.
+DSP Report: Generating DSP gen[1].mult/prod_r_reg, operation Mode is: ((A:0x57)*B)'.
+DSP Report: register gen[1].mult/prod_r_reg is absorbed into DSP gen[1].mult/prod_r_reg.
+DSP Report: operator gen[1].mult/prod_r0 is absorbed into DSP gen[1].mult/prod_r_reg.
+DSP Report: Generating DSP gen[2].mult/prod_r_reg, operation Mode is: (A*(B:0x3ff27))'.
+DSP Report: register gen[2].mult/prod_r_reg is absorbed into DSP gen[2].mult/prod_r_reg.
+DSP Report: operator gen[2].mult/prod_r0 is absorbed into DSP gen[2].mult/prod_r_reg.
+DSP Report: Generating DSP gen[0].mult/prod_r_reg, operation Mode is: ((A:0xbd)*B)'.
+DSP Report: register gen[0].mult/prod_r_reg is absorbed into DSP gen[0].mult/prod_r_reg.
+DSP Report: operator gen[0].mult/prod_r0 is absorbed into DSP gen[0].mult/prod_r_reg.
+DSP Report: Generating DSP U_ROM/x16, operation Mode is: A*B.
+DSP Report: operator U_ROM/x16 is absorbed into DSP U_ROM/x16.
+DSP Report: Generating DSP U_ROM/x12, operation Mode is: A*B.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: Generating DSP U_ROM/x12, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: Generating DSP U_ROM/x9, operation Mode is: A*(B:0x6000).
+DSP Report: operator U_ROM/x9 is absorbed into DSP U_ROM/x9.
+DSP Report: Generating DSP gen[1].mult/prod_r_reg, operation Mode is: (A*(B:0x3ffd3))'.
+DSP Report: register gen[1].mult/prod_r_reg is absorbed into DSP gen[1].mult/prod_r_reg.
+DSP Report: operator gen[1].mult/prod_r0 is absorbed into DSP gen[1].mult/prod_r_reg.
+DSP Report: Generating DSP gen[2].mult/prod_r_reg, operation Mode is: ((A:0x10b)*B)'.
+DSP Report: register gen[2].mult/prod_r_reg is absorbed into DSP gen[2].mult/prod_r_reg.
+DSP Report: operator gen[2].mult/prod_r0 is absorbed into DSP gen[2].mult/prod_r_reg.
+DSP Report: Generating DSP gen[0].mult/prod_r_reg, operation Mode is: (A*(B:0x3ff3c))'.
+DSP Report: register gen[0].mult/prod_r_reg is absorbed into DSP gen[0].mult/prod_r_reg.
+DSP Report: operator gen[0].mult/prod_r0 is absorbed into DSP gen[0].mult/prod_r_reg.
+DSP Report: Generating DSP U_ROM/x16, operation Mode is: A*B.
+DSP Report: operator U_ROM/x16 is absorbed into DSP U_ROM/x16.
+DSP Report: Generating DSP U_ROM/x12, operation Mode is: A*B.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: Generating DSP U_ROM/x12, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: Generating DSP U_ROM/x9, operation Mode is: A*(B:0x6000).
+DSP Report: operator U_ROM/x9 is absorbed into DSP U_ROM/x9.
+DSP Report: Generating DSP gen[1].mult/prod_r_reg, operation Mode is: ((A:0x5f)*B)'.
+DSP Report: register gen[1].mult/prod_r_reg is absorbed into DSP gen[1].mult/prod_r_reg.
+DSP Report: operator gen[1].mult/prod_r0 is absorbed into DSP gen[1].mult/prod_r_reg.
+DSP Report: Generating DSP gen[2].mult/prod_r_reg, operation Mode is: ((A:0x3ffffeeb)*B)'.
+DSP Report: register gen[2].mult/prod_r_reg is absorbed into DSP gen[2].mult/prod_r_reg.
+DSP Report: operator gen[2].mult/prod_r0 is absorbed into DSP gen[2].mult/prod_r_reg.
+DSP Report: Generating DSP gen[0].mult/prod_r_reg, operation Mode is: ((A:0x104)*B)'.
+DSP Report: register gen[0].mult/prod_r_reg is absorbed into DSP gen[0].mult/prod_r_reg.
+DSP Report: operator gen[0].mult/prod_r0 is absorbed into DSP gen[0].mult/prod_r_reg.
+DSP Report: Generating DSP U_ROM/x16, operation Mode is: A*B.
+DSP Report: operator U_ROM/x16 is absorbed into DSP U_ROM/x16.
+DSP Report: Generating DSP U_ROM/x12, operation Mode is: A*B.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: Generating DSP U_ROM/x12, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: Generating DSP U_ROM/x9, operation Mode is: A*(B:0x6000).
+DSP Report: operator U_ROM/x9 is absorbed into DSP U_ROM/x9.
+DSP Report: Generating DSP gen[1].mult/prod_r_reg, operation Mode is: (A*(B:0x3ffcd))'.
+DSP Report: register gen[1].mult/prod_r_reg is absorbed into DSP gen[1].mult/prod_r_reg.
+DSP Report: operator gen[1].mult/prod_r0 is absorbed into DSP gen[1].mult/prod_r_reg.
+DSP Report: Generating DSP gen[2].mult/prod_r_reg, operation Mode is: ((A:0xa0)*B)'.
+DSP Report: register gen[2].mult/prod_r_reg is absorbed into DSP gen[2].mult/prod_r_reg.
+DSP Report: operator gen[2].mult/prod_r0 is absorbed into DSP gen[2].mult/prod_r_reg.
+DSP Report: Generating DSP gen[0].mult/prod_r_reg, operation Mode is: (A*(B:0x3ff5b))'.
+DSP Report: register gen[0].mult/prod_r_reg is absorbed into DSP gen[0].mult/prod_r_reg.
+DSP Report: operator gen[0].mult/prod_r0 is absorbed into DSP gen[0].mult/prod_r_reg.
+DSP Report: Generating DSP U_ROM/x16, operation Mode is: A*B.
+DSP Report: operator U_ROM/x16 is absorbed into DSP U_ROM/x16.
+DSP Report: Generating DSP U_ROM/x12, operation Mode is: A*B.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: Generating DSP U_ROM/x12, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: Generating DSP U_ROM/x9, operation Mode is: A*(B:0x6000).
+DSP Report: operator U_ROM/x9 is absorbed into DSP U_ROM/x9.
+DSP Report: Generating DSP gen[1].mult/prod_r_reg, operation Mode is: ((A:0x54)*B)'.
+DSP Report: register gen[1].mult/prod_r_reg is absorbed into DSP gen[1].mult/prod_r_reg.
+DSP Report: operator gen[1].mult/prod_r0 is absorbed into DSP gen[1].mult/prod_r_reg.
+DSP Report: Generating DSP gen[2].mult/prod_r_reg, operation Mode is: (A*(B:0x3ff21))'.
+DSP Report: register gen[2].mult/prod_r_reg is absorbed into DSP gen[2].mult/prod_r_reg.
+DSP Report: operator gen[2].mult/prod_r0 is absorbed into DSP gen[2].mult/prod_r_reg.
+DSP Report: Generating DSP gen[0].mult/prod_r_reg, operation Mode is: ((A:0xc5)*B)'.
+DSP Report: register gen[0].mult/prod_r_reg is absorbed into DSP gen[0].mult/prod_r_reg.
+DSP Report: operator gen[0].mult/prod_r0 is absorbed into DSP gen[0].mult/prod_r_reg.
+DSP Report: Generating DSP U_ROM/x16, operation Mode is: A*B.
+DSP Report: operator U_ROM/x16 is absorbed into DSP U_ROM/x16.
+DSP Report: Generating DSP U_ROM/x12, operation Mode is: A*B.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: Generating DSP U_ROM/x12, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: Generating DSP U_ROM/x9, operation Mode is: A*(B:0x6000).
+DSP Report: operator U_ROM/x9 is absorbed into DSP U_ROM/x9.
+DSP Report: Generating DSP gen[1].mult/prod_r_reg, operation Mode is: ((A:0xd)*B)'.
+DSP Report: register gen[1].mult/prod_r_reg is absorbed into DSP gen[1].mult/prod_r_reg.
+DSP Report: operator gen[1].mult/prod_r0 is absorbed into DSP gen[1].mult/prod_r_reg.
+DSP Report: Generating DSP gen[2].mult/prod_r_reg, operation Mode is: ((A:0x154)*B)'.
+DSP Report: register gen[2].mult/prod_r_reg is absorbed into DSP gen[2].mult/prod_r_reg.
+DSP Report: operator gen[2].mult/prod_r0 is absorbed into DSP gen[2].mult/prod_r_reg.
+DSP Report: Generating DSP gen[0].mult/prod_r_reg, operation Mode is: (A*(B:0x3ff50))'.
+DSP Report: register gen[0].mult/prod_r_reg is absorbed into DSP gen[0].mult/prod_r_reg.
+DSP Report: operator gen[0].mult/prod_r0 is absorbed into DSP gen[0].mult/prod_r_reg.
+DSP Report: Generating DSP U_ROM/x16, operation Mode is: A*B.
+DSP Report: operator U_ROM/x16 is absorbed into DSP U_ROM/x16.
+DSP Report: Generating DSP U_ROM/x12, operation Mode is: A*B.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: Generating DSP U_ROM/x12, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: Generating DSP U_ROM/x9, operation Mode is: A*(B:0x6000).
+DSP Report: operator U_ROM/x9 is absorbed into DSP U_ROM/x9.
+DSP Report: Generating DSP gen[1].mult/prod_r_reg, operation Mode is: (A*(B:0x3ffa4))'.
+DSP Report: register gen[1].mult/prod_r_reg is absorbed into DSP gen[1].mult/prod_r_reg.
+DSP Report: operator gen[1].mult/prod_r0 is absorbed into DSP gen[1].mult/prod_r_reg.
+DSP Report: Generating DSP gen[2].mult/prod_r_reg, operation Mode is: ((A:0x5e)*B)'.
+DSP Report: register gen[2].mult/prod_r_reg is absorbed into DSP gen[2].mult/prod_r_reg.
+DSP Report: operator gen[2].mult/prod_r0 is absorbed into DSP gen[2].mult/prod_r_reg.
+DSP Report: Generating DSP gen[3].mult/prod_r_reg, operation Mode is: (A*(B:0x3ff90))'.
+DSP Report: register gen[3].mult/prod_r_reg is absorbed into DSP gen[3].mult/prod_r_reg.
+DSP Report: operator gen[3].mult/prod_r0 is absorbed into DSP gen[3].mult/prod_r_reg.
+DSP Report: Generating DSP gen[4].mult/prod_r_reg, operation Mode is: ((A:0x44)*B)'.
+DSP Report: register gen[4].mult/prod_r_reg is absorbed into DSP gen[4].mult/prod_r_reg.
+DSP Report: operator gen[4].mult/prod_r0 is absorbed into DSP gen[4].mult/prod_r_reg.
+DSP Report: Generating DSP gen[5].mult/prod_r_reg, operation Mode is: (A*(B:0x3ff9e))'.
+DSP Report: register gen[5].mult/prod_r_reg is absorbed into DSP gen[5].mult/prod_r_reg.
+DSP Report: operator gen[5].mult/prod_r0 is absorbed into DSP gen[5].mult/prod_r_reg.
+DSP Report: Generating DSP gen[6].mult/prod_r_reg, operation Mode is: ((A:0x54)*B)'.
+DSP Report: register gen[6].mult/prod_r_reg is absorbed into DSP gen[6].mult/prod_r_reg.
+DSP Report: operator gen[6].mult/prod_r0 is absorbed into DSP gen[6].mult/prod_r_reg.
+DSP Report: Generating DSP gen[0].mult/prod_r_reg, operation Mode is: ((A:0x2d)*B)'.
+DSP Report: register gen[0].mult/prod_r_reg is absorbed into DSP gen[0].mult/prod_r_reg.
+DSP Report: operator gen[0].mult/prod_r0 is absorbed into DSP gen[0].mult/prod_r_reg.
+DSP Report: Generating DSP U_ROM/x16, operation Mode is: A*B.
+DSP Report: operator U_ROM/x16 is absorbed into DSP U_ROM/x16.
+DSP Report: Generating DSP U_ROM/x12, operation Mode is: A*B.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: Generating DSP U_ROM/x12, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: operator U_ROM/x12 is absorbed into DSP U_ROM/x12.
+DSP Report: Generating DSP U_ROM/x9, operation Mode is: A*(B:0x6000).
+DSP Report: operator U_ROM/x9 is absorbed into DSP U_ROM/x9.
+DSP Report: Generating DSP gen[1].mult/prod_r_reg, operation Mode is: ((A:0x22)*B)'.
+DSP Report: register gen[1].mult/prod_r_reg is absorbed into DSP gen[1].mult/prod_r_reg.
+DSP Report: operator gen[1].mult/prod_r0 is absorbed into DSP gen[1].mult/prod_r_reg.
+DSP Report: Generating DSP gen[2].mult/prod_r_reg, operation Mode is: (A*(B:0x3ff82))'.
+DSP Report: register gen[2].mult/prod_r_reg is absorbed into DSP gen[2].mult/prod_r_reg.
+DSP Report: operator gen[2].mult/prod_r0 is absorbed into DSP gen[2].mult/prod_r_reg.
+DSP Report: Generating DSP gen[3].mult/prod_r_reg, operation Mode is: ((A:0x65)*B)'.
+DSP Report: register gen[3].mult/prod_r_reg is absorbed into DSP gen[3].mult/prod_r_reg.
+DSP Report: operator gen[3].mult/prod_r0 is absorbed into DSP gen[3].mult/prod_r_reg.
+DSP Report: Generating DSP gen[4].mult/prod_r_reg, operation Mode is: (A*(B:0x3ffb5))'.
+DSP Report: register gen[4].mult/prod_r_reg is absorbed into DSP gen[4].mult/prod_r_reg.
+DSP Report: operator gen[4].mult/prod_r0 is absorbed into DSP gen[4].mult/prod_r_reg.
+DSP Report: Generating DSP gen[5].mult/prod_r_reg, operation Mode is: ((A:0x1f)*B)'.
+DSP Report: register gen[5].mult/prod_r_reg is absorbed into DSP gen[5].mult/prod_r_reg.
+DSP Report: operator gen[5].mult/prod_r0 is absorbed into DSP gen[5].mult/prod_r_reg.
+DSP Report: Generating DSP gen[6].mult/prod_r_reg, operation Mode is: (A*(B:0x3ff6c))'.
+DSP Report: register gen[6].mult/prod_r_reg is absorbed into DSP gen[6].mult/prod_r_reg.
+DSP Report: operator gen[6].mult/prod_r0 is absorbed into DSP gen[6].mult/prod_r_reg.
+DSP Report: Generating DSP gen[0].mult/prod_r_reg, operation Mode is: (A*(B:0x3ffb0))'.
+DSP Report: register gen[0].mult/prod_r_reg is absorbed into DSP gen[0].mult/prod_r_reg.
+DSP Report: operator gen[0].mult/prod_r0 is absorbed into DSP gen[0].mult/prod_r_reg.
+WARNING: [Synth 8-3917] design nn_rgb has port led[2] driven by constant 0
+WARNING: [Synth 8-3917] design nn_rgb has port led[1] driven by constant 0
+WARNING: [Synth 8-3917] design nn_rgb has port led[0] driven by constant 0
+WARNING: [Synth 8-7129] Port enable_in[2] in module nn_rgb is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_in[1] in module nn_rgb is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enable_in[0] in module nn_rgb is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:10 ; elapsed = 00:01:16 . Memory (MB): peak = 2278.535 ; gain = 623.996
+---------------------------------------------------------------------------------
+ Sort Area is  gen[2].mult/prod_r_reg_1e : 0 0 : 431 431 : Used 1 time 100
+ Sort Area is  gen[0].mult/prod_r_reg_1d : 0 0 : 275 275 : Used 1 time 100
+ Sort Area is  gen[0].mult/prod_r_reg_2a : 0 0 : 275 275 : Used 1 time 100
+ Sort Area is  gen[0].mult/prod_r_reg_36 : 0 0 : 275 275 : Used 1 time 100
+ Sort Area is  gen[0].mult/prod_r_reg_f : 0 0 : 275 275 : Used 1 time 100
+ Sort Area is  gen[1].mult/prod_r_reg_12 : 0 0 : 275 275 : Used 1 time 100
+ Sort Area is  gen[1].mult/prod_r_reg_20 : 0 0 : 275 275 : Used 1 time 100
+ Sort Area is  gen[1].mult/prod_r_reg_2c : 0 0 : 275 275 : Used 1 time 100
+ Sort Area is  gen[1].mult/prod_r_reg_32 : 0 0 : 275 275 : Used 1 time 100
+ Sort Area is  gen[1].mult/prod_r_reg_46 : 0 0 : 275 275 : Used 1 time 100
+ Sort Area is  gen[2].mult/prod_r_reg_17 : 0 0 : 275 275 : Used 1 time 100
+ Sort Area is  gen[2].mult/prod_r_reg_25 : 0 0 : 275 275 : Used 1 time 100
+ Sort Area is  gen[2].mult/prod_r_reg_31 : 0 0 : 275 275 : Used 1 time 100
+ Sort Area is  gen[2].mult/prod_r_reg_3b : 0 0 : 275 275 : Used 1 time 100
+ Sort Area is  gen[2].mult/prod_r_reg_8 : 0 0 : 275 275 : Used 1 time 100
+ Sort Area is  gen[3].mult/prod_r_reg_44 : 0 0 : 275 275 : Used 1 time 100
+ Sort Area is  gen[4].mult/prod_r_reg_39 : 0 0 : 275 275 : Used 1 time 100
+ Sort Area is  gen[5].mult/prod_r_reg_42 : 0 0 : 275 275 : Used 1 time 100
+ Sort Area is  gen[6].mult/prod_r_reg_37 : 0 0 : 275 275 : Used 1 time 100
+ Sort Area is  gen[1].mult/prod_r_reg_18 : 0 0 : 214 214 : Used 1 time 100
+ Sort Area is  gen[1].mult/prod_r_reg_26 : 0 0 : 214 214 : Used 1 time 100
+ Sort Area is  gen[0].mult/prod_r_reg_16 : 0 0 : 204 204 : Used 1 time 100
+ Sort Area is  gen[0].mult/prod_r_reg_24 : 0 0 : 204 204 : Used 1 time 100
+ Sort Area is  gen[0].mult/prod_r_reg_30 : 0 0 : 204 204 : Used 1 time 100
+ Sort Area is  gen[2].mult/prod_r_reg_10 : 0 0 : 204 204 : Used 1 time 100
+ Sort Area is  gen[2].mult/prod_r_reg_2b : 0 0 : 204 204 : Used 1 time 100
+ Sort Area is  gen[6].mult/prod_r_reg_41 : 0 0 : 204 204 : Used 1 time 100
+ Sort Area is  gen[0].mult/prod_r_reg_40 : 0 0 : 160 160 : Used 1 time 100
+ Sort Area is  gen[0].mult/prod_r_reg_6 : 0 0 : 160 160 : Used 1 time 100
+ Sort Area is  gen[1].mult/prod_r_reg_3c : 0 0 : 160 160 : Used 1 time 100
+ Sort Area is  gen[2].mult/prod_r_reg_45 : 0 0 : 160 160 : Used 1 time 100
+ Sort Area is  gen[3].mult/prod_r_reg_3a : 0 0 : 160 160 : Used 1 time 100
+ Sort Area is  gen[4].mult/prod_r_reg_43 : 0 0 : 160 160 : Used 1 time 100
+ Sort Area is  gen[5].mult/prod_r_reg_38 : 0 0 : 160 160 : Used 1 time 100
+ Sort Area is  gen[1].mult/prod_r_reg_a : 0 0 : 149 149 : Used 1 time 100
+ Sort Area is  U_ROM/x12_15 : 0 0 : 2478 4233 : Used 1 time 0
+ Sort Area is  U_ROM/x12_15 : 0 1 : 1755 4233 : Used 1 time 0
+ Sort Area is  U_ROM/x12_1c : 0 0 : 2478 4233 : Used 1 time 0
+ Sort Area is  U_ROM/x12_1c : 0 1 : 1755 4233 : Used 1 time 0
+ Sort Area is  U_ROM/x12_23 : 0 0 : 2478 4233 : Used 1 time 0
+ Sort Area is  U_ROM/x12_23 : 0 1 : 1755 4233 : Used 1 time 0
+ Sort Area is  U_ROM/x12_29 : 0 0 : 2478 4233 : Used 1 time 0
+ Sort Area is  U_ROM/x12_29 : 0 1 : 1755 4233 : Used 1 time 0
+ Sort Area is  U_ROM/x12_2f : 0 0 : 2478 4233 : Used 1 time 0
+ Sort Area is  U_ROM/x12_2f : 0 1 : 1755 4233 : Used 1 time 0
+ Sort Area is  U_ROM/x12_35 : 0 0 : 2478 4233 : Used 1 time 0
+ Sort Area is  U_ROM/x12_35 : 0 1 : 1755 4233 : Used 1 time 0
+ Sort Area is  U_ROM/x12_3f : 0 0 : 2478 4233 : Used 1 time 0
+ Sort Area is  U_ROM/x12_3f : 0 1 : 1755 4233 : Used 1 time 0
+ Sort Area is  U_ROM/x12_4 : 0 0 : 2478 4233 : Used 1 time 0
+ Sort Area is  U_ROM/x12_4 : 0 1 : 1755 4233 : Used 1 time 0
+ Sort Area is  U_ROM/x12_e : 0 0 : 2478 4233 : Used 1 time 0
+ Sort Area is  U_ROM/x12_e : 0 1 : 1755 4233 : Used 1 time 0
+ Sort Area is  U_ROM/x16_14 : 0 0 : 2478 2478 : Used 1 time 0
+ Sort Area is  U_ROM/x16_1b : 0 0 : 2478 2478 : Used 1 time 0
+ Sort Area is  U_ROM/x16_2 : 0 0 : 2478 2478 : Used 1 time 0
+ Sort Area is  U_ROM/x16_22 : 0 0 : 2478 2478 : Used 1 time 0
+ Sort Area is  U_ROM/x16_28 : 0 0 : 2478 2478 : Used 1 time 0
+ Sort Area is  U_ROM/x16_2e : 0 0 : 2478 2478 : Used 1 time 0
+ Sort Area is  U_ROM/x16_34 : 0 0 : 2478 2478 : Used 1 time 0
+ Sort Area is  U_ROM/x16_3e : 0 0 : 2478 2478 : Used 1 time 0
+ Sort Area is  U_ROM/x16_d : 0 0 : 2478 2478 : Used 1 time 0
+ Sort Area is  U_ROM/x9_0 : 0 0 : 223 223 : Used 1 time 0
+ Sort Area is  U_ROM/x9_13 : 0 0 : 223 223 : Used 1 time 0
+ Sort Area is  U_ROM/x9_1a : 0 0 : 223 223 : Used 1 time 0
+ Sort Area is  U_ROM/x9_21 : 0 0 : 223 223 : Used 1 time 0
+ Sort Area is  U_ROM/x9_27 : 0 0 : 223 223 : Used 1 time 0
+ Sort Area is  U_ROM/x9_2d : 0 0 : 223 223 : Used 1 time 0
+ Sort Area is  U_ROM/x9_33 : 0 0 : 223 223 : Used 1 time 0
+ Sort Area is  U_ROM/x9_3d : 0 0 : 223 223 : Used 1 time 0
+ Sort Area is  U_ROM/x9_c : 0 0 : 223 223 : Used 1 time 0
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++------------+---------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping         | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+---------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|sigmoid_lut | A*B                 | 18     | 18     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B                 | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | (PCIN>>17)+A*B      | 15     | 15     | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*(B:0x6000)        | 18     | 16     | -      | -      | 34     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | (A*(B:0x3ffe6))'    | 9      | 6      | -      | -      | 15     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | ((A:0x9a)*B)'       | 8      | 18     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | (A*(B:0x3ff85))'    | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|sigmoid_lut | A*B                 | 18     | 18     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B                 | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | (PCIN>>17)+A*B      | 15     | 15     | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*(B:0x6000)        | 18     | 16     | -      | -      | 34     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | ((A:0x57)*B)'       | 8      | 18     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | (A*(B:0x3ff27))'    | 9      | 9      | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | ((A:0xbd)*B)'       | 8      | 18     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|sigmoid_lut | A*B                 | 18     | 18     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B                 | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | (PCIN>>17)+A*B      | 15     | 15     | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*(B:0x6000)        | 18     | 16     | -      | -      | 34     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | (A*(B:0x3ffd3))'    | 9      | 7      | -      | -      | 16     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | ((A:0x10b)*B)'      | 8      | 18     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | (A*(B:0x3ff3c))'    | 9      | 9      | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|sigmoid_lut | A*B                 | 18     | 18     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B                 | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | (PCIN>>17)+A*B      | 15     | 15     | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*(B:0x6000)        | 18     | 16     | -      | -      | 34     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | ((A:0x5f)*B)'       | 8      | 18     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | ((A:0x3ffffeeb)*B)' | 9      | 10     | -      | -      | 19     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | ((A:0x104)*B)'      | 8      | 18     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|sigmoid_lut | A*B                 | 18     | 18     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B                 | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | (PCIN>>17)+A*B      | 15     | 15     | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*(B:0x6000)        | 18     | 16     | -      | -      | 34     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | (A*(B:0x3ffcd))'    | 9      | 7      | -      | -      | 16     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | ((A:0xa0)*B)'       | 8      | 18     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | (A*(B:0x3ff5b))'    | 9      | 9      | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|sigmoid_lut | A*B                 | 18     | 18     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B                 | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | (PCIN>>17)+A*B      | 15     | 15     | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*(B:0x6000)        | 18     | 16     | -      | -      | 34     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | ((A:0x54)*B)'       | 8      | 18     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | (A*(B:0x3ff21))'    | 9      | 9      | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | ((A:0xc5)*B)'       | 8      | 18     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|sigmoid_lut | A*B                 | 18     | 18     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B                 | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | (PCIN>>17)+A*B      | 15     | 15     | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*(B:0x6000)        | 18     | 16     | -      | -      | 34     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | ((A:0xd)*B)'        | 8      | 18     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | ((A:0x154)*B)'      | 8      | 18     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | (A*(B:0x3ff50))'    | 9      | 9      | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|sigmoid_lut | A*B                 | 18     | 18     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B                 | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | (PCIN>>17)+A*B      | 15     | 15     | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*(B:0x6000)        | 18     | 16     | -      | -      | 34     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | (A*(B:0x3ffa4))'    | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | ((A:0x5e)*B)'       | 8      | 18     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | (A*(B:0x3ff90))'    | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | ((A:0x44)*B)'       | 8      | 18     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | (A*(B:0x3ff9e))'    | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | ((A:0x54)*B)'       | 8      | 18     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | ((A:0x2d)*B)'       | 8      | 18     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|sigmoid_lut | A*B                 | 18     | 18     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B                 | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | (PCIN>>17)+A*B      | 15     | 15     | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*(B:0x6000)        | 18     | 16     | -      | -      | 34     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | ((A:0x22)*B)'       | 8      | 18     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | (A*(B:0x3ff82))'    | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | ((A:0x65)*B)'       | 8      | 18     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | (A*(B:0x3ffb5))'    | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | ((A:0x1f)*B)'       | 8      | 18     | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | (A*(B:0x3ff6c))'    | 9      | 9      | -      | -      | 18     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|multiplier  | (A*(B:0x3ffb0))'    | 9      | 8      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 1    | 0    | 
++------------+---------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:30 ; elapsed = 00:01:39 . Memory (MB): peak = 2728.254 ; gain = 1073.715
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:38 ; elapsed = 00:01:47 . Memory (MB): peak = 2810.066 ; gain = 1155.527
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:44 ; elapsed = 00:01:54 . Memory (MB): peak = 2875.816 ; gain = 1221.277
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:53 ; elapsed = 00:02:03 . Memory (MB): peak = 2891.637 ; gain = 1237.098
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:53 ; elapsed = 00:02:03 . Memory (MB): peak = 2891.637 ; gain = 1237.098
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:58 ; elapsed = 00:02:08 . Memory (MB): peak = 2891.637 ; gain = 1237.098
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:59 ; elapsed = 00:02:08 . Memory (MB): peak = 2891.637 ; gain = 1237.098
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:59 ; elapsed = 00:02:09 . Memory (MB): peak = 2891.637 ; gain = 1237.098
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:59 ; elapsed = 00:02:09 . Memory (MB): peak = 2891.637 ; gain = 1237.098
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++------------+-------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name | RTL Name                | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++------------+-------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|nn_rgb      | y_reg[8][7]             | 9      | 8     | NO           | YES                | YES               | 8      | 0       | 
+|nn_rgb      | control/vs_delay_reg[9] | 9      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|nn_rgb      | control/hs_delay_reg[9] | 9      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|nn_rgb      | control/de_delay_reg[9] | 9      | 1     | YES          | NO                 | YES               | 1      | 0       | 
++------------+-------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping   | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|multiplier  | (A'*B)'       | 8      | 18     | -      | -      | 17     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 18     | -      | -      | 15     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 8      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|sigmoid_lut | A*B           | 30     | 18     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B           | 17     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | PCIN>>17+A*B' | 30     | 18     | -      | -      | 15     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B           | 30     | 15     | -      | -      | 34     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | (A'*B)'       | 8      | 8      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 7      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 18     | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|sigmoid_lut | A*B           | 30     | 18     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B           | 17     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | PCIN>>17+A*B' | 30     | 18     | -      | -      | 15     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B           | 30     | 15     | -      | -      | 34     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | (A'*B)'       | 8      | 18     | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 18     | -      | -      | 16     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 9      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|sigmoid_lut | A*B           | 30     | 18     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B           | 17     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | PCIN>>17+A*B' | 30     | 18     | -      | -      | 15     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B           | 30     | 15     | -      | -      | 34     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | (A'*B)'       | 8      | 9      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 7      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 18     | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|sigmoid_lut | A*B           | 30     | 18     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B           | 17     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | PCIN>>17+A*B' | 30     | 18     | -      | -      | 15     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B           | 30     | 15     | -      | -      | 34     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | (A'*B)'       | 8      | 18     | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 18     | -      | -      | 16     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 8      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|sigmoid_lut | A*B           | 30     | 18     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B           | 17     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | PCIN>>17+A*B' | 30     | 18     | -      | -      | 15     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B           | 30     | 15     | -      | -      | 34     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | (A'*B)'       | 8      | 8      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 7      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 18     | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|sigmoid_lut | A*B           | 30     | 18     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B           | 17     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | PCIN>>17+A*B' | 30     | 18     | -      | -      | 15     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B           | 30     | 15     | -      | -      | 34     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | (A'*B)'       | 8      | 18     | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 4      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 9      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|sigmoid_lut | A*B           | 30     | 18     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B           | 17     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | PCIN>>17+A*B' | 30     | 18     | -      | -      | 15     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B           | 30     | 15     | -      | -      | 34     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | (A'*B)'       | 8      | 6      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 18     | -      | -      | 17     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 7      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 18     | -      | -      | 17     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 7      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 18     | -      | -      | 17     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 7      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|sigmoid_lut | A*B           | 30     | 18     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B           | 17     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | PCIN>>17+A*B' | 30     | 18     | -      | -      | 15     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B           | 30     | 15     | -      | -      | 34     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | (A'*B)'       | 8      | 18     | -      | -      | 17     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 6      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 18     | -      | -      | 17     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 7      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 18     | -      | -      | 17     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 5      | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|multiplier  | (A'*B)'       | 8      | 18     | -      | -      | 18     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|sigmoid_lut | A*B           | 30     | 18     | -      | -      | 36     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B           | 17     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | PCIN>>17+A*B' | 30     | 18     | -      | -      | 15     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|sigmoid_lut | A*B           | 30     | 15     | -      | -      | 34     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+----------------+------+
+|      |Cell            |Count |
++------+----------------+------+
+|1     |BUFG            |     1|
+|2     |CARRY8          |   458|
+|3     |DSP_ALU         |    71|
+|4     |DSP_A_B_DATA    |    71|
+|7     |DSP_C_DATA      |    71|
+|9     |DSP_MULTIPLIER  |    71|
+|10    |DSP_M_DATA      |    71|
+|11    |DSP_OUTPUT      |    71|
+|13    |DSP_PREADD      |    71|
+|14    |DSP_PREADD_DATA |    71|
+|15    |LUT1            |  1180|
+|16    |LUT2            |   962|
+|17    |LUT3            |   530|
+|18    |LUT4            |   828|
+|19    |LUT5            |   978|
+|20    |LUT6            |  1029|
+|21    |SRL16E          |    11|
+|22    |FDRE            |   320|
+|23    |FDSE            |     9|
+|24    |IBUF            |    29|
+|25    |OBUF            |    31|
++------+----------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:59 ; elapsed = 00:02:09 . Memory (MB): peak = 2891.637 ; gain = 1237.098
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 7 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:37 ; elapsed = 00:01:58 . Memory (MB): peak = 2891.637 ; gain = 1136.277
+Synthesis Optimization Complete : Time (s): cpu = 00:02:00 ; elapsed = 00:02:11 . Memory (MB): peak = 2891.637 ; gain = 1237.098
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.137 . Memory (MB): peak = 2891.637 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 559 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 2 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2891.637 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 101 instances were transformed.
+  BUFG => BUFGCE: 1 instance 
+  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 71 instances
+  IBUF => IBUF (IBUFCTRL, INBUF): 29 instances
+
+Synth Design complete | Checksum: baa518ef
+INFO: [Common 17-83] Releasing license: Synthesis
+116 Infos, 18 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:02:19 ; elapsed = 00:02:37 . Memory (MB): peak = 2891.637 ; gain = 2371.750
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.200 . Memory (MB): peak = 2891.637 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/OmilosNeonTexn/Desktop/tepak/erevna/thesis_ultrascale_1/thesis_ultrascale_1.runs/synth_1/nn_rgb.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file nn_rgb_utilization_synth.rpt -pb nn_rgb_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Nov  2 18:52:23 2025...

@@ -1,0 +1,31 @@
+dataset:
+  root: ../data/wildfire
+  image_dir: Image
+  fire_subdir: Fire
+  not_fire_subdir: Not_Fire
+  mask_root: Segmentation_Mask
+  mask_fire_subdir: Fire
+  samples_per_image: 800
+  split_csv: null
+
+model:
+  in_dim: 3
+  hidden: 7
+  out_dim: 2
+  activation: "sigmoid"
+
+train:
+  epochs: 12
+  batch_size: 4096
+  lr: 1e-2
+  val_every: 1
+
+quant:
+  total_bits: 12
+  frac_bits: 8
+  saturate: true
+
+export:
+  out_dir: ../FPGA_generate/coeffs
+  lut_size: 4096 #1024
+  lut_range: [-8.0, 8.0]

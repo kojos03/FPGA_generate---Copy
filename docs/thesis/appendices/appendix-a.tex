@@ -1,0 +1,12 @@
+\chapter{Repository Structure and Artifacts}
+\label{app:repo}
+This appendix summarizes relevant folders and artifacts used in the thesis.
+
+\begin{itemize}
+    \item `python/`: Training and export scripts (`train_mlp.py`, `export_fixedpoint.py`, `gen_sigmoid_lut.py`, etc.).
+    \item `python/artifacts/`: Trained parameters and plots (`W1.npy`, `W2.npy`, `b1.npy`, `b2.npy`, `plots/`).
+    \item `coeffs/`: Activation LUT in text/COE formats used by the FPGA design.
+    \item `VHDL/`: Hardware description modules, testbenches, and top-level entities.
+    \item `sim/`: Simulation workspace and waveforms.
+    \item `vivado_thesis/`: Vivado project and implementation/synthesis runs.
+\end{itemize}

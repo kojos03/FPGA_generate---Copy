@@ -1,0 +1,17 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2024.1.2 (win64) Build 5164865 Thu Sep  5 14:37:11 MDT 2024
+| Date              : Thu Jan 15 19:16:30 2026
+| Host              : DESKTOP-0NKI8SO running 64-bit major release  (build 9200)
+| Command           : report_bus_skew -warn_on_violation -file nn_rgb_bus_skew_routed.rpt -pb nn_rgb_bus_skew_routed.pb -rpx nn_rgb_bus_skew_routed.rpx
+| Design            : nn_rgb
+| Device            : xczu7ev-ffvc1156
+| Speed File        : -2  PRODUCTION 1.30 05-15-2022
+| Design State      : Routed
+| Temperature Grade : E
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bus Skew Report
+
+No bus skew constraints
+

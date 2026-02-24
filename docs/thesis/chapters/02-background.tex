@@ -1,0 +1,17 @@
+\chapter{Background}\label{chap:background}
+This chapter summarizes key concepts relevant to this thesis.
+
+\section{Wildfire Detection in Imagery}
+Approaches range from handcrafted features (e.g., color-based rules) to data-driven classifiers and deep neural networks. Edge deployment motivates compact models and efficient inference.
+
+\section{Multilayer Perceptrons}
+An MLP comprises fully connected layers with nonlinear activations. For per-pixel classification, a small network can map RGB inputs to a binary fire/non-fire probability. Quantization and activation approximations (e.g., lookup tables) enable efficient hardware mapping.
+
+\section{Fixed-Point Arithmetic and LUT Activations}
+Fixed-point formats reduce memory usage and DSP requirements at modest accuracy cost. Sigmoid or similar activations can be approximated using lookup tables (LUTs) generated offline and stored in block RAM.
+
+\section{FPGAs and VHDL}
+FPGAs provide reconfigurable logic, DSP slices, and block RAMs. VHDL is used to describe the hardware. Vendor tools like Xilinx Vivado perform synthesis, placement, routing, and bitstream generation.
+
+\section{Related Work}
+Prior work has demonstrated neural inference on FPGAs using fixed-point quantization, pipelining, and memory tiling. This thesis adopts similar principles for a simple MLP.

@@ -1,0 +1,64 @@
+{//TRUENAS/server/proedros/FPGA_generate - Copy/neuron.vhd} {1 {vcom -work work -2002 -explicit {//TRUENAS/server/proedros/FPGA_generate - Copy/neuron.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package CONFIG
+-- Compiling entity neuron
+-- Compiling architecture behave of neuron
+-- Loading entity multiplier
+-- Loading entity sigmoid_IP
+
+} {} {}} {//TRUENAS/server/proedros/FPGA_generate - Copy/multiplier.vhd} {1 {vcom -work work -2002 -explicit {//TRUENAS/server/proedros/FPGA_generate - Copy/multiplier.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package CONFIG
+-- Compiling entity multiplier
+-- Compiling architecture behave of multiplier
+
+} {} {}} {//TRUENAS/server/proedros/FPGA_generate - Copy/sigmoid_lut.vhd} {1 {vcom -work work -2002 -explicit {//TRUENAS/server/proedros/FPGA_generate - Copy/sigmoid_lut.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity sigmoid_lut
+-- Compiling architecture rtl of sigmoid_lut
+
+} {} {}} {//TRUENAS/server/proedros/FPGA_generate - Copy/sigmoid_IP.vhd} {1 {vcom -work work -2002 -explicit {//TRUENAS/server/proedros/FPGA_generate - Copy/sigmoid_IP.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity sigmoid_IP
+-- Compiling architecture rtl of sigmoid_IP
+
+} {} {}} {//TRUENAS/server/proedros/FPGA_generate - Copy/sim_nn_rgb.vhd} {1 {vcom -work work -2002 -explicit {//TRUENAS/server/proedros/FPGA_generate - Copy/sim_nn_rgb.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_textio
+-- Compiling entity sim_nn_rgb
+-- Compiling architecture sim of sim_nn_rgb
+-- Loading package CONFIG
+-- Loading entity nn_rgb
+
+} {} {}} {//TRUENAS/server/proedros/FPGA_generate - Copy/nn_rgb.vhd} {1 {vcom -work work -2002 -explicit {//TRUENAS/server/proedros/FPGA_generate - Copy/nn_rgb.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package CONFIG
+-- Compiling entity nn_rgb
+-- Compiling architecture behave of nn_rgb
+-- Loading entity neuron
+-- Loading entity control
+
+} {} {}}

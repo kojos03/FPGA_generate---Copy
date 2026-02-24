@@ -1,0 +1,49 @@
+graph LR
+    subgraph Video_In
+      VI[vs_in, hs_in, de_in]
+      RGB["r_in[7:0], g_in[7:0], b_in[7:0]"]
+    end
+
+    VI --> IF[Input FFs]
+    RGB --> IF
+
+    IF -->|to_integer(unsigned(...))| C0[connection(0..2) = R,G,B]
+
+    subgraph Layer1[Layer 1 (Hidden) – 7 neurons]
+      direction LR
+      L1N1[neuron j=0]
+      L1N2[neuron j=1]
+      L1N3[neuron j=2]
+      L1N4[neuron j=3]
+      L1N5[neuron j=4]
+      L1N6[neuron j=5]
+      L1N7[neuron j=6]
+    end
+
+    C0 -->|inputsIn = connection(2 downto 0)| Layer1
+    Layer1 -->|outputs| C1[connection(3..9)]
+
+    subgraph Layer2[Layer 2 (Output) – 2 neurons]
+      direction LR
+      L2N1[neuron j=0]
+      L2N2[neuron j=1]
+    end
+
+    C1 -->|inputsIn = connection(9 downto 3)| Layer2
+    Layer2 -->|outputs| C2[connection(10..11)]
+
+    subgraph PostProcess
+      Y0["Y = (5R + 9G + 2B)/16\n10-cycle delay line y[0..10]"]
+      CMP["Compare outputs\nconnection(10), connection(11)"]
+      MAP["Color mapping:\n>127 and max-> yellow/blue else gray"]
+    end
+
+    C0 --> Y0
+    C2 --> CMP --> MAP
+
+    subgraph Video_Out
+      VO[vs_out, hs_out, de_out]
+      RGB2[r_out, g_out, b_out]
+    end
+
+    MAP --> RGB2

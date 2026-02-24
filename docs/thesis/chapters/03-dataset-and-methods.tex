@@ -1,0 +1,20 @@
+\chapter{Dataset and Methods}\label{chap:dataset-methods}
+This chapter documents the dataset, preprocessing, network architecture, training, and export flows.
+
+\section{Dataset}
+The repository contains a `data/wildfire` folder with `Image` and `Segmentation\_Mask` subfolders, each split into `Fire` and `Not\_Fire`. Per-pixel labels are derived from the masks. Example paths: `data/wildfire/Image/Fire/`, `data/wildfire/Segmentation_Mask/Not_Fire/`.
+
+\section{Preprocessing}
+RGB pixels are normalized and optionally augmented. Patches or streaming pixels can be used to build training samples balancing classes.
+
+\section{Network Architecture}
+A compact MLP maps three inputs (R, G, B) to a scalar fire probability. Hidden layer width is selected to meet accuracy and hardware constraints. The activation function is chosen to be sigmoid for hardware-friendly LUT approximation.
+
+\section{Training Pipeline}
+The `python/train_mlp.py` script trains the model and saves artifacts under `python/artifacts/` (e.g., `W1.npy`, `W2.npy`, `b1.npy`, `b2.npy`). Evaluation utilities such as `python/evaluate_and_plot.py` generate performance plots.
+
+\section{Fixed-Point Export}
+Scripts `python/export_fixedpoint.py`, `python/gen_sigmoid_lut.py`, and `python/export_to_xilinx.py` quantize weights/biases and generate coefficient files. The activation LUT is saved to `coeffs/activation_lut.txt` and converted to Xilinx COE via `python/activation_txt_to_coe.py`, producing `coeffs/activation_lut.coe`.
+
+\section{Test Vectors}
+The `python/make_test_vectors.py` utility exports golden vectors to `python/artifacts/testvectors/` (e.g., `pixels_in.txt`, `golden_prob_fire.txt`) for simulation.

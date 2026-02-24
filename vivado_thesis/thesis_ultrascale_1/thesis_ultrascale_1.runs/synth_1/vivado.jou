@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.1.2 (64-bit)
+# SW Build 5164865 on Thu Sep  5 14:37:11 MDT 2024
+# IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
+# SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
+# Start of session at: Sun Nov  2 18:49:15 2025
+# Process ID: 5200
+# Current directory: C:/Users/OmilosNeonTexn/Desktop/tepak/erevna/thesis_ultrascale_1/thesis_ultrascale_1.runs/synth_1
+# Command line: vivado.exe -log nn_rgb.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source nn_rgb.tcl
+# Log file: C:/Users/OmilosNeonTexn/Desktop/tepak/erevna/thesis_ultrascale_1/thesis_ultrascale_1.runs/synth_1/nn_rgb.vds
+# Journal file: C:/Users/OmilosNeonTexn/Desktop/tepak/erevna/thesis_ultrascale_1/thesis_ultrascale_1.runs/synth_1\vivado.jou
+# Running On        :DESKTOP-0NKI8SO
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :19045
+# Processor Detail  :Intel(R) Core(TM) i5-4460  CPU @ 3.20GHz
+# CPU Frequency     :3193 MHz
+# CPU Physical cores:4
+# CPU Logical cores :4
+# Host memory       :10622 MB
+# Swap memory       :6474 MB
+# Total Virtual     :17096 MB
+# Available Virtual :5453 MB
+#-----------------------------------------------------------
+source nn_rgb.tcl -notrace

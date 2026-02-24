@@ -1,0 +1,14 @@
+\chapter{Results and Evaluation}\label{chap:results}
+This chapter presents classification performance, fixed-/float-point comparisons, and FPGA resource/utilization metrics.
+
+\section{Classification Metrics}
+Report accuracy, precision, recall, F1, ROC AUC on a held-out test set. Visualize examples with true positives/negatives and errors.
+
+\section{Fixed- vs Floating-Point}
+Quantify accuracy deltas due to quantization. Compare CPU float inference to FPGA fixed-point outputs using golden vectors.
+
+\section{FPGA Utilization and Timing}
+Summarize post-implementation utilization (LUT, FF, BRAM, DSP) and timing (WNS, Fmax). Include throughput (pixels/s) and latency estimates.
+
+\section{Ablations}
+Optional: Evaluate layer width, bit width, and activation LUT resolution.

@@ -1,0 +1,5 @@
+This thesis presents the design, training, and hardware implementation of a compact multilayer perceptron (MLP) for per-pixel wildfire detection on RGB imagery. A Python pipeline trains a fixed-point friendly network using remotely-sensed wildfire and non-fire image patches. The trained weights, biases, and activation lookup tables are exported for FPGA synthesis. The hardware architecture is described in VHDL and integrated in Xilinx Vivado targeting an UltraScale device. Results demonstrate real-time throughput with competitive accuracy under fixed-point quantization.
+
+Key contributions include: (i) dataset preparation and a reproducible training pipeline, (ii) fixed-point export flows and an activation LUT generation methodology, (iii) a streaming VHDL architecture for inference with resource/performance measurements, and (iv) experimental evaluation on test imagery and comparison to floating-point baselines.
+
+Keywords: wildfire detection, FPGA, VHDL, fixed-point neural networks, MLP, LUT-based activation
