@@ -22,6 +22,7 @@ architecture sim of tb_nn_rgb is
   -- DUT ports
   signal clk       : std_logic := '0';
   signal reset_n   : std_logic := '0';
+  signal reset_i   : std_logic := '1';
   signal enable_in : std_logic_vector(2 downto 0) := (others => '1');
 
   signal vs_in     : std_logic := '0';
@@ -160,6 +161,7 @@ architecture sim of tb_nn_rgb is
 begin
   -- clock
   clk <= not clk after CLK_PER/2;
+  reset_i <= not reset_n;
 
   -- DUT
   dut: entity work.nn_rgb
@@ -238,7 +240,7 @@ begin
     )
     port map (
       clk                 => clk,
-      reset               => not reset_n,
+      reset               => reset_i,
       frame_done          => t_frame_done,
       frame_bbox_valid    => t_frame_bbox_valid,
       frame_fire_count    => t_frame_fire_count,
@@ -281,7 +283,7 @@ begin
     )
     port map (
       clk             => clk,
-      reset           => not reset_n,
+      reset           => reset_i,
       frame_done      => d_frame_done,
       fire_count      => d_fire_count,
       centroid_valid  => d_centroid_valid,
@@ -310,7 +312,7 @@ begin
     )
     port map (
       clk             => clk,
-      reset           => not reset_n,
+      reset           => reset_i,
       vs_in           => fs_vs_in,
       de_in           => fs_de_in,
       fire_pix        => fs_fire_pix,
