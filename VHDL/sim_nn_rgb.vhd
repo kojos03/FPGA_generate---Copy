@@ -4,15 +4,13 @@
 -- reading and writing images in ppm-file format
 --          ppm-file can be generated and viewed with IrfanView and probably other image viewers
 --          verified with IrfanView version 4.54 - 64 bit and 4.44 - 64 bit
---
--- FPGA Vision Remote Lab http://h-brs.de/fpga-vision-lab
--- (c) Marco Winzker, Hochschule Bonn-Rhein-Sieg, 17.09.2020
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 use IEEE.NUMERIC_STD.ALL;
 use std.textio.all;
 use ieee.std_logic_textio.all;
+use work.CONFIG.ALL;
 
 entity sim_nn_rgb is
 end sim_nn_rgb;
@@ -41,6 +39,49 @@ architecture sim of sim_nn_rgb is
   signal r_out     : std_logic_vector(7 downto 0);
   signal g_out     : std_logic_vector(7 downto 0);
   signal b_out     : std_logic_vector(7 downto 0);
+  signal fire_pixel          : std_logic;
+  signal frame_stats_valid   : std_logic;
+  signal frame_fire_detected : std_logic;
+  signal frame_fire_count    : std_logic_vector(FIRE_COUNT_BITS-1 downto 0);
+  signal frame_bbox_valid    : std_logic;
+  signal frame_min_x         : std_logic_vector(FRAME_X_BITS-1 downto 0);
+  signal frame_max_x         : std_logic_vector(FRAME_X_BITS-1 downto 0);
+  signal frame_min_y         : std_logic_vector(FRAME_Y_BITS-1 downto 0);
+  signal frame_max_y         : std_logic_vector(FRAME_Y_BITS-1 downto 0);
+  signal frame_done          : std_logic;
+  signal fire_count          : std_logic_vector(FIRE_COUNT_BITS-1 downto 0);
+  signal secondary_count     : std_logic_vector(FIRE_COUNT_BITS-1 downto 0);
+  signal sum_x_fire          : std_logic_vector(FIRE_SUM_X_BITS-1 downto 0);
+  signal sum_y_fire          : std_logic_vector(FIRE_SUM_Y_BITS-1 downto 0);
+  signal xmin_out            : std_logic_vector(FRAME_X_BITS-1 downto 0);
+  signal xmax_out            : std_logic_vector(FRAME_X_BITS-1 downto 0);
+  signal ymin_out            : std_logic_vector(FRAME_Y_BITS-1 downto 0);
+  signal ymax_out            : std_logic_vector(FRAME_Y_BITS-1 downto 0);
+  signal bbox_valid_out      : std_logic;
+  signal centroid_valid      : std_logic;
+  signal temporal_stats_valid : std_logic;
+  signal temporal_valid       : std_logic;
+  signal fire_growing         : std_logic;
+  signal fire_shrinking       : std_logic;
+  signal fire_count_delta     : std_logic_vector(FIRE_COUNT_BITS downto 0);
+  signal centroid_x           : std_logic_vector(FRAME_X_BITS-1 downto 0);
+  signal centroid_y           : std_logic_vector(FRAME_Y_BITS-1 downto 0);
+  signal delta_x              : std_logic_vector(FRAME_X_BITS downto 0);
+  signal delta_y              : std_logic_vector(FRAME_Y_BITS downto 0);
+  signal move_left            : std_logic;
+  signal move_right           : std_logic;
+  signal move_up              : std_logic;
+  signal move_down            : std_logic;
+  signal move_dir_code        : std_logic_vector(3 downto 0);
+  signal bbox_width_growing   : std_logic;
+  signal bbox_height_growing  : std_logic;
+  signal spread_detected      : std_logic;
+  signal fire_present         : std_logic;
+  signal persistent_fire      : std_logic;
+  signal growth_alert         : std_logic;
+  signal movement_alert       : std_logic;
+  signal risk_level           : std_logic_vector(1 downto 0);
+  signal decision_valid       : std_logic;
   signal clk_o     : std_logic;
   signal led       : std_logic_vector(2 downto 0);
   signal x_size, y_size      : integer;
@@ -69,6 +110,49 @@ begin
               r_out     => r_out,
               g_out     => g_out,
               b_out     => b_out,
+              fire_pixel          => fire_pixel,
+              frame_stats_valid   => frame_stats_valid,
+              frame_fire_detected => frame_fire_detected,
+              frame_fire_count    => frame_fire_count,
+              frame_bbox_valid    => frame_bbox_valid,
+              frame_min_x         => frame_min_x,
+              frame_max_x         => frame_max_x,
+              frame_min_y         => frame_min_y,
+              frame_max_y         => frame_max_y,
+              frame_done          => frame_done,
+              fire_count          => fire_count,
+              secondary_count     => secondary_count,
+              sum_x_fire          => sum_x_fire,
+              sum_y_fire          => sum_y_fire,
+              xmin_out            => xmin_out,
+              xmax_out            => xmax_out,
+              ymin_out            => ymin_out,
+              ymax_out            => ymax_out,
+              bbox_valid_out      => bbox_valid_out,
+              centroid_valid      => centroid_valid,
+              temporal_stats_valid => temporal_stats_valid,
+              temporal_valid       => temporal_valid,
+              fire_growing         => fire_growing,
+              fire_shrinking       => fire_shrinking,
+              fire_count_delta     => fire_count_delta,
+              centroid_x           => centroid_x,
+              centroid_y           => centroid_y,
+              delta_x              => delta_x,
+              delta_y              => delta_y,
+              move_left            => move_left,
+              move_right           => move_right,
+              move_up              => move_up,
+              move_down            => move_down,
+              move_dir_code        => move_dir_code,
+              bbox_width_growing   => bbox_width_growing,
+              bbox_height_growing  => bbox_height_growing,
+              spread_detected      => spread_detected,
+              fire_present         => fire_present,
+              persistent_fire      => persistent_fire,
+              growth_alert         => growth_alert,
+              movement_alert       => movement_alert,
+              risk_level           => risk_level,
+              decision_valid       => decision_valid,
               clk_o     => clk_o,
               led       => led);
 

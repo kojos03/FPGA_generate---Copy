@@ -1,0 +1,504 @@
+m255
+K3
+13
+cModel Technology
+Z0 dU:\tepak\FPGA_generate - Copy\VHDL
+Pconfig
+Z1 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z2 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z3 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+w1773328709
+Z4 dU:\tepak\FPGA_generate - Copy\VHDL
+8config.vhd
+Fconfig.vhd
+l0
+L5
+V=?l9_l2]mA?kN1I4jF8@i2
+!s100 2]ji2D0zk4a=K5WBRl@zk0
+Z5 OV;C;10.1d;51
+33
+!i10b 1
+Z6 !s108 1773328868.786000
+Z7 !s90 -2008|config.vhd|control.vhd|multiplier.vhd|sigmoid_IP.vhd|neuron.vhd|frame_stats.vhd|fire_frame_aggregator.vhd|temporal_tracker.vhd|decision_layer.vhd|nn_rgb.vhd|tb_nn_rgb.vhd|sim_nn_rgb.vhd|
+Z8 !s107 sim_nn_rgb.vhd|tb_nn_rgb.vhd|nn_rgb.vhd|decision_layer.vhd|temporal_tracker.vhd|fire_frame_aggregator.vhd|frame_stats.vhd|neuron.vhd|sigmoid_IP.vhd|multiplier.vhd|control.vhd|config.vhd|
+Z9 o-2008 -O0
+Z10 tExplicit 1
+Econtrol
+Z11 w1769186280
+R1
+R2
+R3
+R4
+Z12 8control.vhd
+Z13 Fcontrol.vhd
+l0
+L5
+Vn;<2:EJ9^n@a7E9TWRVA_2
+!s100 <6zTm?^:ziT<GX5ARoGd`2
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Abehave
+R1
+R2
+R3
+Z14 DEx4 work 7 control 0 22 n;<2:EJ9^n@a7E9TWRVA_2
+l25
+L17
+Z15 VDYY@FhidMROmVI3g9];i<2
+Z16 !s100 PmC1MW^2]=<L;4j0>`YZQ2
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Edecision_layer
+Z17 w1773328702
+Z18 DPx4 work 6 config 0 22 =?l9_l2]mA?kN1I4jF8@i2
+R1
+R2
+R3
+R4
+Z19 8decision_layer.vhd
+Z20 Fdecision_layer.vhd
+l0
+L9
+VI2F^bo]FETJG48]`f<oTL3
+!s100 E]72gCG=QS9d7ZFQGe8eH2
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Artl
+R18
+R1
+R2
+R3
+Z21 DEx4 work 14 decision_layer 0 22 I2F^bo]FETJG48]`f<oTL3
+l74
+L44
+Vm9EaI`@Nag1`2QabIoMb@3
+!s100 @EY6>MV^R32dCSLM4N=2<3
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Efire_frame_aggregator
+Z22 w1773263083
+R18
+R1
+R2
+R3
+R4
+Z23 8fire_frame_aggregator.vhd
+Z24 Ffire_frame_aggregator.vhd
+l0
+L13
+ViTnS_=GON3_91HUB^B3C@2
+!s100 :=6gF6]LlS;bnnAYF8K0A1
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Artl
+R18
+R1
+R2
+R3
+Z25 DEx4 work 21 fire_frame_aggregator 0 22 iTnS_=GON3_91HUB^B3C@2
+l81
+L42
+Z26 VPoTjjM=6H??WI2Sm?0WH`0
+Z27 !s100 O:eHnecgHKc3M<nBHD83h3
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Efire_frame_temporal
+Z28 w1773263795
+Z29 DPx4 work 6 config 0 22 @Nok:6oCgU9eHE@2oi8b10
+R1
+R2
+R3
+R4
+Z30 8fire_frame_temporal.vhd
+Z31 Ffire_frame_temporal.vhd
+l0
+L9
+V2DNNV2bH3F:3Leo4K]G?j1
+R5
+33
+Z32 !s108 1773323235.966000
+Z33 !s90 -2008|config.vhd|control.vhd|multiplier.vhd|sigmoid_IP.vhd|neuron.vhd|frame_stats.vhd|fire_frame_aggregator.vhd|fire_frame_temporal.vhd|nn_rgb.vhd|tb_nn_rgb.vhd|
+Z34 !s107 tb_nn_rgb.vhd|nn_rgb.vhd|fire_frame_temporal.vhd|fire_frame_aggregator.vhd|frame_stats.vhd|neuron.vhd|sigmoid_IP.vhd|multiplier.vhd|control.vhd|config.vhd|
+R9
+R10
+!s100 VZSdc@hUeQB3dP0hogD;V1
+!i10b 1
+Artl
+R29
+R1
+R2
+R3
+DEx4 work 19 fire_frame_temporal 0 22 2DNNV2bH3F:3Leo4K]G?j1
+l122
+L66
+VZmOh[?dCccU356aJ0:6^U2
+R5
+33
+R32
+R33
+R34
+R9
+R10
+!s100 jK2kkTCoeP9Y0ZTd2LnNc3
+!i10b 1
+Eframe_stats
+Z35 w1773317234
+R18
+R1
+R2
+R3
+R4
+Z36 8frame_stats.vhd
+Z37 Fframe_stats.vhd
+l0
+L8
+V76m1JLV;jC@f?dVKTFiP:3
+!s100 SDbf_k?9P3PhO:m9]zEYn2
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Artl
+R18
+R1
+R2
+R3
+Z38 DEx4 work 11 frame_stats 0 22 76m1JLV;jC@f?dVKTFiP:3
+l75
+L42
+Z39 V_:af8GfX[@O`9iR6GEHn`1
+Z40 !s100 F>:ihZ23TKeV_nYndi3M]3
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Emultiplier
+Z41 w1762097216
+R1
+R18
+R2
+R3
+R4
+Z42 8multiplier.vhd
+Z43 Fmultiplier.vhd
+l0
+L8
+VLJiGZ5FL^[^ZB0z`;o9_B3
+!s100 RdgRD3Vc`3cM2SKB^GNQ[1
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Abehave
+R1
+R18
+R2
+R3
+Z44 DEx4 work 10 multiplier 0 22 LJiGZ5FL^[^ZB0z`;o9_B3
+l24
+L19
+Z45 Vf9Z_2Gc4bH5UCb[LGXNhH1
+Z46 !s100 z3OCbn6_GCN`ENzHUdd1l0
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Eneuron
+Z47 w1762097214
+R18
+R1
+R2
+R3
+R4
+Z48 8neuron.vhd
+Z49 Fneuron.vhd
+l0
+L11
+V9l=Bdon7b[DbSP1XnJRAn3
+!s100 6PZioYn2a8_]G8BcSeM3h1
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Abehave
+Z50 DEx4 work 10 sigmoid_ip 0 22 QZ2Y8;Am?a84^?KzZm^?A3
+R44
+R18
+R1
+R2
+R3
+Z51 DEx4 work 6 neuron 0 22 9l=Bdon7b[DbSP1XnJRAn3
+l28
+L19
+Z52 V68TM:4YV@977_zH0@O3H]1
+Z53 !s100 1@PWQkEeAi67X;HYX?ULV3
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Enn_rgb
+Z54 w1773328739
+R18
+R1
+R2
+R3
+R4
+Z55 8nn_rgb.vhd
+Z56 Fnn_rgb.vhd
+l0
+L9
+V71>OH4[c5S<NFcj;873[m3
+!s100 JRNHI^8MTbiFJHh1cFn]a2
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Abehave
+R21
+Z57 DEx4 work 16 temporal_tracker 0 22 lc_V8b[LT9^BN?NmKCdZa0
+R25
+R38
+R14
+R51
+R18
+R1
+R2
+R3
+Z58 DEx4 work 6 nn_rgb 0 22 71>OH4[c5S<NFcj;873[m3
+l178
+L90
+VM5bS8=GVjl94DXOF5l^I23
+!s100 8E=C972SKdhDze^1VYbOj1
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Esigmoid_ip
+Z59 w1760519065
+R2
+R3
+R4
+Z60 8sigmoid_IP.vhd
+Z61 Fsigmoid_IP.vhd
+l0
+L40
+VQZ2Y8;Am?a84^?KzZm^?A3
+!s100 ?SG]n3Tam5XkFM4<U]ZnJ0
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Artl
+R2
+R3
+R50
+l69
+L48
+Z62 VRemV2J=SA:Ci_jC33nB7G2
+Z63 !s100 BNRHGbek;5fZDjMY6znF42
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Esim_nn_rgb
+Z64 w1773328749
+R18
+Z65 DPx4 ieee 16 std_logic_textio 0 22 ?Il0a149GV276[?[UMDWh2
+R1
+R2
+R3
+R4
+Z66 8sim_nn_rgb.vhd
+Z67 Fsim_nn_rgb.vhd
+l0
+L15
+Vg;XIaB<FGPF`_jA>c[mMj3
+!s100 >4DD22Y1mS7VDZACEVni71
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Asim
+R58
+R18
+R65
+R1
+R2
+R3
+Z68 DEx4 work 10 sim_nn_rgb 0 22 g;XIaB<FGPF`_jA>c[mMj3
+l91
+L18
+Vn^VYFdbN45iW@=Z:?]3GL0
+!s100 LZK[9;<?SizN9Cobz:aQi2
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Etb_nn_rgb
+Z69 w1773328839
+R18
+R65
+R1
+R2
+R3
+R4
+Z70 8tb_nn_rgb.vhd
+Z71 Ftb_nn_rgb.vhd
+l0
+L10
+V6UJZHnz_e:C:Uc4iz@T?X3
+!s100 1QTM3hWg8zVjWYWOc?o>k0
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Asim
+R38
+R21
+R57
+R58
+R18
+R65
+R1
+R2
+R3
+Z72 DEx4 work 9 tb_nn_rgb 0 22 6UJZHnz_e:C:Uc4iz@T?X3
+l160
+L13
+VNBi3<:]X=QQC;lQ8dX:R@1
+!s100 OoIYlkHemTg^dn:i95U1k1
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Etemporal_tracker
+Z73 w1773327308
+R18
+R1
+R2
+R3
+R4
+Z74 8temporal_tracker.vhd
+Z75 Ftemporal_tracker.vhd
+l0
+L9
+Vlc_V8b[LT9^BN?NmKCdZa0
+!s100 dgjiz?AMjj8I8Lj:n_VI33
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10
+Artl
+R18
+R1
+R2
+R3
+R57
+l113
+L66
+Z76 VPGl7oJ[JPT`b7L9M]]hXJ0
+Z77 !s100 ]7ONRSN=Dada>L956Xj^23
+R5
+33
+!i10b 1
+R6
+R7
+R8
+R9
+R10

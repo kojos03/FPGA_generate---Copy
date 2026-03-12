@@ -1,0 +1,5 @@
+# vsim -do {run -all; quit -f} -c work.tb_nn_rgb 
+# run -all 
+# Break in Process stim at tb_nn_rgb.vhd line 408
+# Stopped at tb_nn_rgb.vhd line 408 
+#  quit -f 

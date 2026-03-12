@@ -9,6 +9,29 @@ package CONFIG is
 	--   signal connection : INPUT(11 downto 0);
 	-- connection(2 downto 0) are NN inputs, connection(11 downto 10) are NN outputs
 
+	-- Frame-level wildfire metadata configuration.
+	-- These values define the numeric width of frame counters/coordinates
+	-- and the threshold used for frame-level fire detection.
+	constant FRAME_X_BITS          : natural := 12;   -- up to 4096 columns
+	constant FRAME_Y_BITS          : natural := 12;   -- up to 4096 rows
+	constant FIRE_COUNT_BITS       : natural := 24;   -- up to 16,777,216 pixels/frame
+	constant FIRE_SUM_X_BITS       : natural := FRAME_X_BITS + FIRE_COUNT_BITS;
+	constant FIRE_SUM_Y_BITS       : natural := FRAME_Y_BITS + FIRE_COUNT_BITS;
+	constant FIRE_COUNT_THRESHOLD  : natural := 4096; -- tune per resolution/sensitivity
+
+	-- Temporal comparison thresholds (frame-to-frame behavior estimation).
+	-- Small thresholds suppress one-pixel/one-count jitter in trend decisions.
+	constant TEMP_AREA_DELTA_TH    : natural := 16;
+	constant TEMP_MOVE_DELTA_TH    : natural := 1;
+	constant TEMP_SPREAD_DELTA_TH  : natural := 1;
+
+	-- Decision-layer thresholds.
+	-- These values map extracted frame/temporal features to coarse risk outputs.
+	constant FIRE_PRESENT_THRESHOLD : natural := 64;
+	constant GROWTH_THRESHOLD       : natural := 32;
+	constant MOVEMENT_THRESHOLD     : natural := 2;
+	constant PERSISTENCE_FRAMES     : natural := 3;
+
 	-- int Arrays with Constants
 	type constIntArray is ARRAY (natural range <>) of integer;
 	constant networkStructure : constIntArray (2 downto 0) := (2,7,3);

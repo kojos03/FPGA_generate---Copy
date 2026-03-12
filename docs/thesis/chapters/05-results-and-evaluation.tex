@@ -8,7 +8,41 @@ Report accuracy, precision, recall, F1, ROC AUC on a held-out test set. Visualiz
 Quantify accuracy deltas due to quantization. Compare CPU float inference to FPGA fixed-point outputs using golden vectors.
 
 \section{FPGA Utilization and Timing}
-Summarize post-implementation utilization (LUT, FF, BRAM, DSP) and timing (WNS, Fmax). Include throughput (pixels/s) and latency estimates.
+Post-route timing closed for the configured pixel clock. The implementation report shows a clock period of \(13.468\ \text{ns}\) (\(74.25\ \text{MHz}\)) and positive slack, so real-time streaming operation is achieved at the target video rate.
+
+\subsection{Latency and Throughput}
+Throughput is computed with
+\begin{equation}
+T = \frac{B \cdot f_{\max}}{N_{\text{cycles}}},
+\end{equation}
+where \(B\) is block size in bits and \(N_{\text{cycles}}\) is the number of clock cycles per block.
+
+For this design, one processed block is one RGB pixel:
+\[
+B = 8 + 8 + 8 = 24\ \text{bits}.
+\]
+The top-level control alignment uses a delay of 9 cycles, so the end-to-end latency is
+\begin{equation}
+L = \frac{N_{\text{cycles}}}{f_{\text{clk}}}
+  = \frac{9}{74.25 \times 10^{6}}
+  = 1.212 \times 10^{-7}\ \text{s}
+  = 121.2\ \text{ns}.
+\end{equation}
+
+Using \(f_{\max} = 74.25\ \text{MHz}\), \(B=24\), and \(N_{\text{cycles}}=9\):
+\begin{equation}
+T = \frac{24 \cdot 74.25 \times 10^{6}}{9}
+  = 1.98 \times 10^{8}\ \text{bit/s}
+  = 198\ \text{Mbit/s}.
+\end{equation}
+
+Since the architecture is pipelined, after the initial fill it accepts one pixel every clock. Therefore, steady-state streaming throughput is
+\begin{equation}
+T_{\text{steady}} = 24 \cdot 74.25 \times 10^{6}
+                  = 1.782 \times 10^{9}\ \text{bit/s}
+                  = 1.782\ \text{Gbit/s},
+\end{equation}
+which is equivalent to \(74.25\) Mpixel/s.
 
 \section{Ablations}
 Optional: Evaluate layer width, bit width, and activation LUT resolution.
