@@ -1,1 +1,12 @@
 docs/thesis/sources.zip
+docs/thesis/output/*.docx
+docs/thesis/output/~$*.docx
+
+VHDL/work/
+VHDL/transcript
+VHDL/tb_nn_rgb_response.ppm
+
+sim/*.mpf
+sim/modelsim.ini
+sim_test/*.mpf
+sim_test/work/
