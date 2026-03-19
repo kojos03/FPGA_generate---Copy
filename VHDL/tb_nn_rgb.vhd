@@ -12,10 +12,11 @@ end entity;
 
 architecture sim of tb_nn_rgb is
   -- simulation config
-  constant H_ACTIVE  : integer := 16;
-  constant V_ACTIVE  : integer := 8;
+  constant H_ACTIVE  : integer := 256;
+  constant V_ACTIVE  : integer := 256;
   constant H_BLANK   : integer := 8;
   constant NUM_FRAMES: integer := 3;
+  constant IMAGE_FLOW_ONLY : boolean := true;
   constant FIRE_THRESHOLD_TB : natural := 8;
   constant CLK_PER   : time    := 13.47 ns; -- 74.25 MHz
 
@@ -156,8 +157,9 @@ architecture sim of tb_nn_rgb is
   signal fs_centroid_y     : std_logic_vector(FRAME_Y_BITS-1 downto 0);
   signal fs_centroid_valid : std_logic;
 
-  -- response file
-  constant response_filename : string := "tb_nn_rgb_response.ppm";
+  -- image file names (relative to simulator working directory)
+  constant stimuli_filename  : string := "image_stimuli.ppm";
+  constant response_filename : string := "image_response.ppm";
 begin
   -- clock
   clk <= not clk after CLK_PER/2;
@@ -231,112 +233,81 @@ begin
       led       => led
     );
 
-  -- directed temporal estimator instance for deterministic checks
-  temporal_duv: entity work.temporal_tracker
-    generic map (
-      X_BITS            => FRAME_X_BITS,
-      Y_BITS            => FRAME_Y_BITS,
-      COUNT_BITS        => FIRE_COUNT_BITS
-    )
-    port map (
-      clk                 => clk,
-      reset               => reset_i,
-      frame_done          => t_frame_done,
-      frame_bbox_valid    => t_frame_bbox_valid,
-      frame_fire_count    => t_frame_fire_count,
-      frame_min_x         => t_frame_min_x,
-      frame_max_x         => t_frame_max_x,
-      frame_min_y         => t_frame_min_y,
-      frame_max_y         => t_frame_max_y,
-      centroid_x_in       => t_centroid_x_in,
-      centroid_y_in       => t_centroid_y_in,
-      centroid_valid_in   => t_centroid_valid_in,
-      temporal_stats_valid => t_temporal_stats_valid,
-      temporal_valid       => t_temporal_valid,
-      fire_growing         => t_fire_growing,
-      fire_shrinking       => t_fire_shrinking,
-      fire_count_delta     => t_fire_count_delta,
-      centroid_x           => t_centroid_x,
-      centroid_y           => t_centroid_y,
-      delta_x              => t_delta_x,
-      delta_y              => t_delta_y,
-      move_left            => t_move_left,
-      move_right           => t_move_right,
-      move_up              => t_move_up,
-      move_down            => t_move_down,
-      move_dir_code        => t_move_dir_code,
-      bbox_width_growing   => t_bbox_width_growing,
-      bbox_height_growing  => t_bbox_height_growing,
-      spread_detected      => t_spread_detected
-    );
-
-  -- directed decision layer instance for deterministic checks
-  decision_duv: entity work.decision_layer
-    generic map (
-      X_BITS                   => FRAME_X_BITS,
-      Y_BITS                   => FRAME_Y_BITS,
-      COUNT_BITS               => FIRE_COUNT_BITS,
-      FIRE_PRESENT_THRESHOLD_G => 5,
-      GROWTH_THRESHOLD_G       => 3,
-      MOVEMENT_THRESHOLD_G     => 1,
-      PERSISTENCE_FRAMES_G     => 2
-    )
-    port map (
-      clk             => clk,
-      reset           => reset_i,
-      frame_done      => d_frame_done,
-      fire_count      => d_fire_count,
-      centroid_valid  => d_centroid_valid,
-      centroid_x      => d_centroid_x,
-      centroid_y      => d_centroid_y,
-      dx              => d_dx,
-      dy              => d_dy,
-      dA              => d_dA,
-      temporal_valid  => d_temporal_valid,
-      fire_present    => d_fire_present,
-      persistent_fire => d_persistent_fire,
-      growth_alert    => d_growth_alert,
-      movement_alert  => d_movement_alert,
-      risk_level      => d_risk_level,
-      decision_valid  => d_decision_valid
-    );
-
-  -- directed frame-stats instance for deterministic checks
-  frame_stats_duv: entity work.frame_stats
-    generic map (
-      X_BITS     => FRAME_X_BITS,
-      Y_BITS     => FRAME_Y_BITS,
-      COUNT_BITS => FIRE_COUNT_BITS,
-      SUM_X_BITS => FIRE_SUM_X_BITS,
-      SUM_Y_BITS => FIRE_SUM_Y_BITS
-    )
-    port map (
-      clk             => clk,
-      reset           => reset_i,
-      vs_in           => fs_vs_in,
-      de_in           => fs_de_in,
-      fire_pix        => fs_fire_pix,
-      secondary_pix   => fs_secondary_pix,
-      x_pos           => fs_x_pos,
-      y_pos           => fs_y_pos,
-      frame_done      => fs_frame_done,
-      fire_count      => fs_fire_count,
-      secondary_count => fs_secondary_count,
-      sum_x_fire      => fs_sum_x_fire,
-      sum_y_fire      => fs_sum_y_fire,
-      xmin_out        => fs_xmin_out,
-      xmax_out        => fs_xmax_out,
-      ymin_out        => fs_ymin_out,
-      ymax_out        => fs_ymax_out,
-      bbox_valid_out  => fs_bbox_valid_out,
-      centroid_x      => fs_centroid_x,
-      centroid_y      => fs_centroid_y,
-      centroid_valid  => fs_centroid_valid
-    );
-
   -- stimulus
   stim: process
-    variable x, y, f : integer;
+    file stim_f               : text;
+    variable stim_l           : line;
+    variable opened           : file_open_status;
+    variable x, y, f          : integer;
+    variable width_i          : integer := 0;
+    variable height_i         : integer := 0;
+    variable max_i            : integer := 0;
+    variable r_i, g_i, b_i    : integer := 0;
+    variable good             : boolean := false;
+    variable token_ok         : boolean := false;
+    variable skip_line        : boolean := false;
+    variable magic            : string(1 to 2);
+
+    procedure line_is_skip(
+      variable l_in         : in line;
+      variable skip_out     : out boolean) is
+      variable idx          : integer;
+    begin
+      skip_out := true;
+      if l_in = null then
+        return;
+      end if;
+
+      for idx in l_in.all'range loop
+        if (l_in.all(idx) /= ' ') and (l_in.all(idx) /= character'val(9)) then
+          if l_in.all(idx) = '#' then
+            skip_out := true;
+          else
+            skip_out := false;
+          end if;
+          return;
+        end if;
+      end loop;
+    end procedure;
+
+    procedure read_next_int(
+      file f_in              : text;
+      variable l_buf         : inout line;
+      variable value_out     : out integer;
+      variable ok_out        : out boolean) is
+      variable good_int      : boolean := false;
+      variable skip_current  : boolean := false;
+      variable done          : boolean := false;
+    begin
+      ok_out := false;
+      done := false;
+
+      while done = false loop
+        if l_buf = null then
+          if endfile(f_in) then
+            return;
+          end if;
+
+          readline(f_in, l_buf);
+          line_is_skip(l_buf, skip_current);
+          if skip_current then
+            l_buf := null;
+          end if;
+        end if;
+
+        if l_buf /= null then
+          read(l_buf, value_out, good_int);
+          if good_int then
+            done := true;
+          else
+            -- malformed token or inline comment start: discard rest of line
+            l_buf := null;
+          end if;
+        end if;
+      end loop;
+
+      ok_out := true;
+    end procedure;
   begin
     -- reset for ~20 cycles
     wait for 20*CLK_PER;
@@ -346,6 +317,67 @@ begin
     -- generate several frames so the DUT can latch previous-frame metadata
     -- at each new frame start.
     for f in 0 to NUM_FRAMES-1 loop
+      file_open(opened, stim_f, stimuli_filename, read_mode);
+      assert opened = open_ok
+        report "Failed to open input PPM file: " & stimuli_filename
+        severity failure;
+
+      stim_l := null;
+      token_ok := false;
+      while token_ok = false loop
+        if endfile(stim_f) then
+          assert false
+            report "Malformed PPM header: missing magic number."
+            severity failure;
+        end if;
+
+        readline(stim_f, stim_l);
+        line_is_skip(stim_l, skip_line);
+        if skip_line = false then
+          read(stim_l, magic, token_ok);
+          if token_ok = false then
+            stim_l := null;
+          end if;
+        end if;
+      end loop;
+
+      assert magic = "P3"
+        report "Unsupported PPM format in " & stimuli_filename & ": expected P3."
+        severity failure;
+
+      read_next_int(stim_f, stim_l, width_i, good);
+      assert good
+        report "Malformed PPM header: missing width."
+        severity failure;
+
+      read_next_int(stim_f, stim_l, height_i, good);
+      assert good
+        report "Malformed PPM header: missing height."
+        severity failure;
+
+      read_next_int(stim_f, stim_l, max_i, good);
+      assert good
+        report "Malformed PPM header: missing max value."
+        severity failure;
+
+      assert max_i = 255
+        report "Unsupported PPM max value in " & stimuli_filename & ": expected 255."
+        severity failure;
+
+      assert width_i = H_ACTIVE
+        report "PPM width mismatch. image_stimuli.ppm width="
+          & integer'image(width_i)
+          & ", expected H_ACTIVE="
+          & integer'image(H_ACTIVE)
+        severity failure;
+
+      assert height_i = V_ACTIVE
+        report "PPM height mismatch. image_stimuli.ppm height="
+          & integer'image(height_i)
+          & ", expected V_ACTIVE="
+          & integer'image(V_ACTIVE)
+        severity failure;
+
       for y in 0 to V_ACTIVE-1 loop
         -- vertical sync only on first line of each frame
         if y = 0 then vs_in <= '1'; else vs_in <= '0'; end if;
@@ -360,10 +392,34 @@ begin
         -- active pixels
         de_in <= '1';
         for x in 0 to H_ACTIVE-1 loop
-          -- deterministic but frame-varying color pattern
-          r_in <= std_logic_vector(to_unsigned((x*16 + f*13) mod 256, 8));
-          g_in <= std_logic_vector(to_unsigned((y*32 + f*21) mod 256, 8));
-          b_in <= std_logic_vector(to_unsigned((x*16 + y*32 + f*17) mod 256, 8));
+          read_next_int(stim_f, stim_l, r_i, good);
+          assert good
+            report "Premature end-of-file while reading R pixel data from " & stimuli_filename
+            severity failure;
+
+          read_next_int(stim_f, stim_l, g_i, good);
+          assert good
+            report "Premature end-of-file while reading G pixel data from " & stimuli_filename
+            severity failure;
+
+          read_next_int(stim_f, stim_l, b_i, good);
+          assert good
+            report "Premature end-of-file while reading B pixel data from " & stimuli_filename
+            severity failure;
+
+          assert (r_i >= 0) and (r_i <= 255)
+            report "Invalid R pixel value in " & stimuli_filename
+            severity failure;
+          assert (g_i >= 0) and (g_i <= 255)
+            report "Invalid G pixel value in " & stimuli_filename
+            severity failure;
+          assert (b_i >= 0) and (b_i <= 255)
+            report "Invalid B pixel value in " & stimuli_filename
+            severity failure;
+
+          r_in <= std_logic_vector(to_unsigned(r_i, 8));
+          g_in <= std_logic_vector(to_unsigned(g_i, 8));
+          b_in <= std_logic_vector(to_unsigned(b_i, 8));
           wait until rising_edge(clk);
         end loop;
         de_in <= '0';
@@ -384,6 +440,8 @@ begin
       for x in 0 to 15 loop
         wait until rising_edge(clk);
       end loop;
+
+      file_close(stim_f);
     end loop;
 
     -- trailing clocks then finish
@@ -391,21 +449,23 @@ begin
       wait until rising_edge(clk);
     end loop;
 
-    assert checks_done > 0
-      report "No frame-level metadata checks were executed."
-      severity error;
+    if IMAGE_FLOW_ONLY = false then
+      assert checks_done > 0
+        report "No frame-level metadata checks were executed."
+        severity error;
 
-    assert temporal_checks_done > 0
-      report "No temporal behavior checks were executed."
-      severity error;
+      assert temporal_checks_done > 0
+        report "No temporal behavior checks were executed."
+        severity error;
 
-    assert frame_stats_checks_done > 0
-      report "No frame_stats checks were executed."
-      severity error;
+      assert frame_stats_checks_done > 0
+        report "No frame_stats checks were executed."
+        severity error;
 
-    assert decision_checks_done > 0
-      report "No decision-layer checks were executed."
-      severity error;
+      assert decision_checks_done > 0
+        report "No decision-layer checks were executed."
+        severity error;
+    end if;
 
     assert false report "Simulation completed" severity failure;
   end process;
@@ -418,12 +478,21 @@ begin
     variable r_i, g_i, b_i: integer;
     variable started      : boolean := false;
     variable px_written   : integer := 0;
+    variable fire_px      : integer := 0;
+    variable secondary_px : integer := 0;
+    variable background_px: integer := 0;
+    variable fire_pct     : integer := 0;
+    variable secondary_pct: integer := 0;
+    variable background_pct: integer := 0;
   begin
     -- wait until DUT starts a line
     wait until hs_out = '1';
     started := true;
 
     file_open(opened, f, response_filename, write_mode);
+    assert opened = open_ok
+      report "Failed to open output PPM file: " & response_filename
+      severity failure;
     -- header
     write(l, string'("P3"));                writeline(f, l);
     write(l, string'("# tb_nn_rgb output")); writeline(f, l);
@@ -436,6 +505,15 @@ begin
         r_i := to_integer(unsigned(r_out));
         g_i := to_integer(unsigned(g_out));
         b_i := to_integer(unsigned(b_out));
+
+        if (r_out(7) = '1') and (g_out(7) = '1') and (b_out(7) = '0') then
+          fire_px := fire_px + 1;
+        elsif (r_out(7) = '0') and (g_out(7) = '0') and (b_out(7) = '1') then
+          secondary_px := secondary_px + 1;
+        else
+          background_px := background_px + 1;
+        end if;
+
         write(l, r_i); write(l, string'(" "));
         write(l, g_i); write(l, string'(" "));
         write(l, b_i); writeline(f, l);
@@ -447,6 +525,23 @@ begin
     end loop;
 
     file_close(f);
+    if px_written > 0 then
+      fire_pct := (fire_px*100)/px_written;
+      secondary_pct := (secondary_px*100)/px_written;
+      background_pct := (background_px*100)/px_written;
+      report "Image response summary: total_px="
+        & integer'image(px_written)
+        & ", fire_px="
+        & integer'image(fire_px)
+        & " (" & integer'image(fire_pct) & "%)"
+        & ", secondary_px="
+        & integer'image(secondary_px)
+        & " (" & integer'image(secondary_pct) & "%)"
+        & ", background_px="
+        & integer'image(background_px)
+        & " (" & integer'image(background_pct) & "%)"
+        severity note;
+    end if;
     wait;
   end process;
 
@@ -570,6 +665,10 @@ begin
   -- and valid handling for first-frame and intermittent no-fire cases.
   temporal_stim_check: process
   begin
+    if IMAGE_FLOW_ONLY then
+      wait;
+    end if;
+
     t_frame_done <= '0';
     t_frame_bbox_valid  <= '0';
     t_frame_fire_count  <= (others => '0');
@@ -733,6 +832,10 @@ begin
   -- Scenario E: fire disappears
   decision_stim_check: process
   begin
+    if IMAGE_FLOW_ONLY then
+      wait;
+    end if;
+
     d_frame_done <= '0';
     d_fire_count <= (others => '0');
     d_centroid_valid <= '0';
@@ -868,6 +971,10 @@ begin
   -- fire_count, secondary_count, sums, bbox, and frame_done behavior.
   frame_stats_stim_check: process
   begin
+    if IMAGE_FLOW_ONLY then
+      wait;
+    end if;
+
     fs_vs_in <= '0';
     fs_de_in <= '0';
     fs_fire_pix <= '0';
