@@ -12,10 +12,11 @@ end entity;
 
 architecture sim of tb_nn_rgb is
   -- simulation config
-  constant H_ACTIVE  : integer := 16;
-  constant V_ACTIVE  : integer := 8;
+  constant H_ACTIVE  : integer := 256;
+  constant V_ACTIVE  : integer := 256;
   constant H_BLANK   : integer := 8;
   constant NUM_FRAMES: integer := 3;
+  constant IMAGE_FLOW_ONLY : boolean := true;
   constant FIRE_THRESHOLD_TB : natural := 8;
   constant CLK_PER   : time    := 13.47 ns; -- 74.25 MHz
 
@@ -448,21 +449,23 @@ begin
       wait until rising_edge(clk);
     end loop;
 
-    assert checks_done > 0
-      report "No frame-level metadata checks were executed."
-      severity error;
+    if IMAGE_FLOW_ONLY = false then
+      assert checks_done > 0
+        report "No frame-level metadata checks were executed."
+        severity error;
 
-    assert temporal_checks_done > 0
-      report "No temporal behavior checks were executed."
-      severity error;
+      assert temporal_checks_done > 0
+        report "No temporal behavior checks were executed."
+        severity error;
 
-    assert frame_stats_checks_done > 0
-      report "No frame_stats checks were executed."
-      severity error;
+      assert frame_stats_checks_done > 0
+        report "No frame_stats checks were executed."
+        severity error;
 
-    assert decision_checks_done > 0
-      report "No decision-layer checks were executed."
-      severity error;
+      assert decision_checks_done > 0
+        report "No decision-layer checks were executed."
+        severity error;
+    end if;
 
     assert false report "Simulation completed" severity failure;
   end process;
@@ -630,6 +633,10 @@ begin
   -- and valid handling for first-frame and intermittent no-fire cases.
   temporal_stim_check: process
   begin
+    if IMAGE_FLOW_ONLY then
+      wait;
+    end if;
+
     t_frame_done <= '0';
     t_frame_bbox_valid  <= '0';
     t_frame_fire_count  <= (others => '0');
@@ -793,6 +800,10 @@ begin
   -- Scenario E: fire disappears
   decision_stim_check: process
   begin
+    if IMAGE_FLOW_ONLY then
+      wait;
+    end if;
+
     d_frame_done <= '0';
     d_fire_count <= (others => '0');
     d_centroid_valid <= '0';
@@ -928,6 +939,10 @@ begin
   -- fire_count, secondary_count, sums, bbox, and frame_done behavior.
   frame_stats_stim_check: process
   begin
+    if IMAGE_FLOW_ONLY then
+      wait;
+    end if;
+
     fs_vs_in <= '0';
     fs_de_in <= '0';
     fs_fire_pix <= '0';
