@@ -478,6 +478,12 @@ begin
     variable r_i, g_i, b_i: integer;
     variable started      : boolean := false;
     variable px_written   : integer := 0;
+    variable fire_px      : integer := 0;
+    variable secondary_px : integer := 0;
+    variable background_px: integer := 0;
+    variable fire_pct     : integer := 0;
+    variable secondary_pct: integer := 0;
+    variable background_pct: integer := 0;
   begin
     -- wait until DUT starts a line
     wait until hs_out = '1';
@@ -499,6 +505,15 @@ begin
         r_i := to_integer(unsigned(r_out));
         g_i := to_integer(unsigned(g_out));
         b_i := to_integer(unsigned(b_out));
+
+        if (r_out(7) = '1') and (g_out(7) = '1') and (b_out(7) = '0') then
+          fire_px := fire_px + 1;
+        elsif (r_out(7) = '0') and (g_out(7) = '0') and (b_out(7) = '1') then
+          secondary_px := secondary_px + 1;
+        else
+          background_px := background_px + 1;
+        end if;
+
         write(l, r_i); write(l, string'(" "));
         write(l, g_i); write(l, string'(" "));
         write(l, b_i); writeline(f, l);
@@ -510,6 +525,23 @@ begin
     end loop;
 
     file_close(f);
+    if px_written > 0 then
+      fire_pct := (fire_px*100)/px_written;
+      secondary_pct := (secondary_px*100)/px_written;
+      background_pct := (background_px*100)/px_written;
+      report "Image response summary: total_px="
+        & integer'image(px_written)
+        & ", fire_px="
+        & integer'image(fire_px)
+        & " (" & integer'image(fire_pct) & "%)"
+        & ", secondary_px="
+        & integer'image(secondary_px)
+        & " (" & integer'image(secondary_pct) & "%)"
+        & ", background_px="
+        & integer'image(background_px)
+        & " (" & integer'image(background_pct) & "%)"
+        severity note;
+    end if;
     wait;
   end process;
 
