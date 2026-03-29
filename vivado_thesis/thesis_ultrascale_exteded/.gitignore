@@ -1,0 +1,14 @@
+.Xil/
+*.jou
+*.log
+*.str
+*.tmp
+*.backup.*
+
+thesis_ultrascale_exteded.cache/
+thesis_ultrascale_exteded.hw/
+thesis_ultrascale_exteded.ip_user_files/
+thesis_ultrascale_exteded.gen/
+thesis_ultrascale_exteded.runs/
+thesis_ultrascale_exteded.sim/
+thesis_ultrascale_exteded.srcs/
