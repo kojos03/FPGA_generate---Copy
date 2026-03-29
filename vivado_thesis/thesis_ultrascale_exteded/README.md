@@ -7,7 +7,7 @@
 - `xczu7ev-ffvc1156-2-e` (reused from existing thesis Vivado project in this repository)
 
 ## Synthesis top module
-- `nn_rgb`
+- `nn_rgb_board_top`
 
 ## Design sources
 - `VHDL/config.vhd`
@@ -21,6 +21,7 @@
 - `VHDL/temporal_tracker.vhd`
 - `VHDL/decision_layer.vhd`
 - `VHDL/nn_rgb.vhd`
+- `VHDL/nn_rgb_board_top.vhd`
 
 ## Simulation sources
 - `VHDL/tb_nn_rgb.vhd` (sim top in this project)
@@ -40,5 +41,7 @@ C:\Xilinx\xilinx1\Vivado\2024.1\bin\vivado.bat thesis_ultrascale_exteded.xpr
 
 ## Notes
 - This setup intentionally separates design sources (`sources_1`) and simulation sources (`sim_1`).
+- `nn_rgb_board_top` is used for implementation so large internal analytics buses are kept internal and are not exposed as FPGA package pins.
+- `nn_rgb` is kept as the full internal/simulation-oriented module with all analytics outputs.
 - No board pin constraint file is auto-added here because no valid project-level board XDC was found in this repo root for the extended design. Add your board-specific XDC before bitstream generation.
 - Vivado reports a Windows path-length warning for this folder depth. If needed, use `subst` to map a shorter drive path before launching heavy IP/BD flows.
