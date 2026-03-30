@@ -481,12 +481,25 @@ begin
     variable fire_px      : integer := 0;
     variable secondary_px : integer := 0;
     variable background_px: integer := 0;
+    variable bbox_overlay_px     : integer := 0;
+    variable centroid_overlay_px : integer := 0;
+    variable status_overlay_px   : integer := 0;
+    variable x_img               : integer := 0;
+    variable y_img               : integer := 0;
     variable fire_pct     : integer := 0;
     variable secondary_pct: integer := 0;
     variable background_pct: integer := 0;
+    constant STATUS_BOX_W_C : integer := 16;
+    constant STATUS_BOX_H_C : integer := 16;
   begin
-    -- wait until DUT starts a line
-    wait until hs_out = '1';
+    -- wait for output frame with valid frame-level metadata so overlays are visible
+    wait until reset_n = '1';
+    while started = false loop
+      wait until rising_edge(clk);
+      if (vs_out = '1') and (frame_stats_valid = '1') then
+        started := true;
+      end if;
+    end loop;
     started := true;
 
     file_open(opened, f, response_filename, write_mode);
@@ -505,6 +518,25 @@ begin
         r_i := to_integer(unsigned(r_out));
         g_i := to_integer(unsigned(g_out));
         b_i := to_integer(unsigned(b_out));
+        x_img := px_written mod H_ACTIVE;
+        y_img := px_written / H_ACTIVE;
+
+        if (r_i = 0) and (g_i = 255) and (b_i = 0) then
+          bbox_overlay_px := bbox_overlay_px + 1;
+        end if;
+
+        if (r_i = 255) and (g_i = 0) and (b_i = 255) then
+          centroid_overlay_px := centroid_overlay_px + 1;
+        end if;
+
+        if (x_img < STATUS_BOX_W_C) and (y_img < STATUS_BOX_H_C) then
+          if ((r_i = 48) and (g_i = 48) and (b_i = 48)) or
+             ((r_i = 255) and (g_i = 255) and (b_i = 0)) or
+             ((r_i = 255) and (g_i = 160) and (b_i = 0)) or
+             ((r_i = 255) and (g_i = 0) and (b_i = 0)) then
+            status_overlay_px := status_overlay_px + 1;
+          end if;
+        end if;
 
         if (r_out(7) = '1') and (g_out(7) = '1') and (b_out(7) = '0') then
           fire_px := fire_px + 1;
@@ -540,8 +572,27 @@ begin
         & ", background_px="
         & integer'image(background_px)
         & " (" & integer'image(background_pct) & "%)"
+        & ", bbox_overlay_px="
+        & integer'image(bbox_overlay_px)
+        & ", centroid_overlay_px="
+        & integer'image(centroid_overlay_px)
+        & ", status_overlay_px="
+        & integer'image(status_overlay_px)
         severity note;
     end if;
+
+    assert bbox_overlay_px > 0
+      report "Bounding-box overlay was not detected in output image."
+      severity error;
+
+    assert centroid_overlay_px > 0
+      report "Centroid overlay was not detected in output image."
+      severity error;
+
+    assert status_overlay_px >= 64
+      report "Risk/status overlay was not detected in output image."
+      severity error;
+
     wait;
   end process;
 

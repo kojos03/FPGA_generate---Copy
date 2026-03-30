@@ -119,6 +119,28 @@ architecture behave of nn_rgb is
 
   constant X_POS_ALL_ONES   : unsigned(FRAME_X_BITS-1 downto 0) := (others => '1');
   constant Y_POS_ALL_ONES   : unsigned(FRAME_Y_BITS-1 downto 0) := (others => '1');
+  constant OVERLAY_CROSS_HALF_X_C : unsigned(FRAME_X_BITS-1 downto 0) := to_unsigned(2, FRAME_X_BITS);
+  constant OVERLAY_CROSS_HALF_Y_C : unsigned(FRAME_Y_BITS-1 downto 0) := to_unsigned(2, FRAME_Y_BITS);
+  constant STATUS_BOX_W_C         : unsigned(FRAME_X_BITS-1 downto 0) := to_unsigned(16, FRAME_X_BITS);
+  constant STATUS_BOX_H_C         : unsigned(FRAME_Y_BITS-1 downto 0) := to_unsigned(16, FRAME_Y_BITS);
+  constant OVERLAY_BBOX_R_C       : std_logic_vector(7 downto 0) := x"00";
+  constant OVERLAY_BBOX_G_C       : std_logic_vector(7 downto 0) := x"FF";
+  constant OVERLAY_BBOX_B_C       : std_logic_vector(7 downto 0) := x"00";
+  constant OVERLAY_CENTROID_R_C   : std_logic_vector(7 downto 0) := x"FF";
+  constant OVERLAY_CENTROID_G_C   : std_logic_vector(7 downto 0) := x"00";
+  constant OVERLAY_CENTROID_B_C   : std_logic_vector(7 downto 0) := x"FF";
+  constant OVERLAY_RISK_NONE_R_C  : std_logic_vector(7 downto 0) := x"30";
+  constant OVERLAY_RISK_NONE_G_C  : std_logic_vector(7 downto 0) := x"30";
+  constant OVERLAY_RISK_NONE_B_C  : std_logic_vector(7 downto 0) := x"30";
+  constant OVERLAY_RISK_LOW_R_C   : std_logic_vector(7 downto 0) := x"FF";
+  constant OVERLAY_RISK_LOW_G_C   : std_logic_vector(7 downto 0) := x"FF";
+  constant OVERLAY_RISK_LOW_B_C   : std_logic_vector(7 downto 0) := x"00";
+  constant OVERLAY_RISK_MED_R_C   : std_logic_vector(7 downto 0) := x"FF";
+  constant OVERLAY_RISK_MED_G_C   : std_logic_vector(7 downto 0) := x"A0";
+  constant OVERLAY_RISK_MED_B_C   : std_logic_vector(7 downto 0) := x"00";
+  constant OVERLAY_RISK_HIGH_R_C  : std_logic_vector(7 downto 0) := x"FF";
+  constant OVERLAY_RISK_HIGH_G_C  : std_logic_vector(7 downto 0) := x"00";
+  constant OVERLAY_RISK_HIGH_B_C  : std_logic_vector(7 downto 0) := x"00";
 
   -- frame-level metadata signals from aggregator
   signal frame_stats_valid_s   : std_logic;
@@ -232,6 +254,24 @@ begin
 end process;
 
 process
+  variable overlay_r_v       : std_logic_vector(7 downto 0);
+  variable overlay_g_v       : std_logic_vector(7 downto 0);
+  variable overlay_b_v       : std_logic_vector(7 downto 0);
+  variable x_now_v           : unsigned(FRAME_X_BITS-1 downto 0);
+  variable y_now_v           : unsigned(FRAME_Y_BITS-1 downto 0);
+  variable xmin_v            : unsigned(FRAME_X_BITS-1 downto 0);
+  variable xmax_v            : unsigned(FRAME_X_BITS-1 downto 0);
+  variable ymin_v            : unsigned(FRAME_Y_BITS-1 downto 0);
+  variable ymax_v            : unsigned(FRAME_Y_BITS-1 downto 0);
+  variable centroid_x_v      : unsigned(FRAME_X_BITS-1 downto 0);
+  variable centroid_y_v      : unsigned(FRAME_Y_BITS-1 downto 0);
+  variable centroid_x_min_v  : unsigned(FRAME_X_BITS-1 downto 0);
+  variable centroid_x_max_v  : unsigned(FRAME_X_BITS-1 downto 0);
+  variable centroid_y_min_v  : unsigned(FRAME_Y_BITS-1 downto 0);
+  variable centroid_y_max_v  : unsigned(FRAME_Y_BITS-1 downto 0);
+  variable bbox_hit_v        : boolean;
+  variable centroid_hit_v    : boolean;
+  variable status_hit_v      : boolean;
 begin
 
   wait until rising_edge(clk);
@@ -276,13 +316,102 @@ begin
             bg_pix_class <= '1';
       end if;
 
+    -- overlay in output-aligned coordinate space
+    overlay_r_v := result_r;
+    overlay_g_v := result_g;
+    overlay_b_v := result_b;
+    x_now_v := x_pos_s;
+    y_now_v := y_pos_s;
+    bbox_hit_v := false;
+    centroid_hit_v := false;
+    status_hit_v := false;
+
+    if de_1 = '1' then
+      status_hit_v := (x_now_v < STATUS_BOX_W_C) and (y_now_v < STATUS_BOX_H_C);
+
+      if centroid_valid_s = '1' then
+        centroid_x_v := unsigned(frame_centroid_x_s);
+        centroid_y_v := unsigned(frame_centroid_y_s);
+
+        if centroid_x_v > OVERLAY_CROSS_HALF_X_C then
+          centroid_x_min_v := centroid_x_v - OVERLAY_CROSS_HALF_X_C;
+        else
+          centroid_x_min_v := (others => '0');
+        end if;
+
+        if centroid_x_v < (X_POS_ALL_ONES - OVERLAY_CROSS_HALF_X_C) then
+          centroid_x_max_v := centroid_x_v + OVERLAY_CROSS_HALF_X_C;
+        else
+          centroid_x_max_v := X_POS_ALL_ONES;
+        end if;
+
+        if centroid_y_v > OVERLAY_CROSS_HALF_Y_C then
+          centroid_y_min_v := centroid_y_v - OVERLAY_CROSS_HALF_Y_C;
+        else
+          centroid_y_min_v := (others => '0');
+        end if;
+
+        if centroid_y_v < (Y_POS_ALL_ONES - OVERLAY_CROSS_HALF_Y_C) then
+          centroid_y_max_v := centroid_y_v + OVERLAY_CROSS_HALF_Y_C;
+        else
+          centroid_y_max_v := Y_POS_ALL_ONES;
+        end if;
+
+        if ((x_now_v = centroid_x_v) and (y_now_v >= centroid_y_min_v) and (y_now_v <= centroid_y_max_v)) or
+           ((y_now_v = centroid_y_v) and (x_now_v >= centroid_x_min_v) and (x_now_v <= centroid_x_max_v)) then
+          centroid_hit_v := true;
+        end if;
+      end if;
+
+      if bbox_valid_out_s = '1' then
+        xmin_v := unsigned(xmin_out_s);
+        xmax_v := unsigned(xmax_out_s);
+        ymin_v := unsigned(ymin_out_s);
+        ymax_v := unsigned(ymax_out_s);
+
+        if (((x_now_v = xmin_v) or (x_now_v = xmax_v)) and (y_now_v >= ymin_v) and (y_now_v <= ymax_v)) or
+           (((y_now_v = ymin_v) or (y_now_v = ymax_v)) and (x_now_v >= xmin_v) and (x_now_v <= xmax_v)) then
+          bbox_hit_v := true;
+        end if;
+      end if;
+
+      if centroid_hit_v then
+        overlay_r_v := OVERLAY_CENTROID_R_C;
+        overlay_g_v := OVERLAY_CENTROID_G_C;
+        overlay_b_v := OVERLAY_CENTROID_B_C;
+      elsif bbox_hit_v then
+        overlay_r_v := OVERLAY_BBOX_R_C;
+        overlay_g_v := OVERLAY_BBOX_G_C;
+        overlay_b_v := OVERLAY_BBOX_B_C;
+      elsif status_hit_v then
+        case risk_level_s is
+          when "01" =>
+            overlay_r_v := OVERLAY_RISK_LOW_R_C;
+            overlay_g_v := OVERLAY_RISK_LOW_G_C;
+            overlay_b_v := OVERLAY_RISK_LOW_B_C;
+          when "10" =>
+            overlay_r_v := OVERLAY_RISK_MED_R_C;
+            overlay_g_v := OVERLAY_RISK_MED_G_C;
+            overlay_b_v := OVERLAY_RISK_MED_B_C;
+          when "11" =>
+            overlay_r_v := OVERLAY_RISK_HIGH_R_C;
+            overlay_g_v := OVERLAY_RISK_HIGH_G_C;
+            overlay_b_v := OVERLAY_RISK_HIGH_B_C;
+          when others =>
+            overlay_r_v := OVERLAY_RISK_NONE_R_C;
+            overlay_g_v := OVERLAY_RISK_NONE_G_C;
+            overlay_b_v := OVERLAY_RISK_NONE_B_C;
+        end case;
+      end if;
+    end if;
+
     -- output FFs 
     vs_2       <= vs_1;
     hs_2       <= hs_1;
     de_2       <= de_1;
-    r_2        <= result_r;
-    g_2        <= result_g;
-    b_2        <= result_b;
+    r_2        <= overlay_r_v;
+    g_2        <= overlay_g_v;
+    b_2        <= overlay_b_v;
     fire_pix_2 <= fire_pix_class;
     secondary_pix_2 <= secondary_pix_class;
     bg_pix_2 <= bg_pix_class;
